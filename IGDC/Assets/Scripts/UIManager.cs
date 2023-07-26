@@ -6,7 +6,6 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI fpsText; 
-    [Range(0.1f,1)] [SerializeField] float _hudRefreshRate = 1;
     float deltaTime = 0.0f;
     // Start is called before the first frame update
     void Start()

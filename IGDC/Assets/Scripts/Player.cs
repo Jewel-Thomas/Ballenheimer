@@ -5,10 +5,17 @@ using UnityEngine;
 public class Player : MonoBehaviour,IThrowBall
 {
     BallSpawner ballSpawner;
+    CharacterController characterController;
     // Start is called before the first frame update
     void Start()
     {
+        Application.targetFrameRate = 60;
+        QualitySettings.vSyncCount = 1;
+        QualitySettings.pixelLightCount = 6;
+        // Cursor.visible = false;
+        // Cursor.lockState = CursorLockMode.Locked;
         ballSpawner = GameObject.Find("BallSpawner").GetComponent<BallSpawner>();
+        characterController = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
@@ -21,10 +28,11 @@ public class Player : MonoBehaviour,IThrowBall
             Throw();
         }
         #endif
+        
     }
-
     public void Throw()
     {
         ballSpawner.ThrowBall();
     }
+
 }
