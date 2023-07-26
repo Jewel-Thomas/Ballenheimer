@@ -30,7 +30,7 @@ public class FirstPersonRotation : MonoBehaviour
     {
         turn.x += Input.GetAxis("Mouse X")*sensitivity;
         turn.y = Mathf.Clamp(turn.y + Input.GetAxis("Mouse Y")*sensitivity,-35,35);
-        transform.localRotation = Quaternion.Euler(-turn.y,turn.x-90,0);
+        transform.localRotation = Quaternion.Euler(-turn.y,turn.x,0);
     }
 
     void TouchRotation()
@@ -42,7 +42,7 @@ public class FirstPersonRotation : MonoBehaviour
             {
                 turn.x += touch.deltaPosition.x*sensitivity*0.3f;
                 turn.y = Mathf.Clamp(turn.y+touch.deltaPosition.y*sensitivity*0.3f,-35,35);
-                transform.localRotation = Quaternion.Euler(-turn.y,turn.x-90,0);
+                transform.localRotation = Quaternion.Euler(-turn.y,turn.x,0);
             }
         }
     }

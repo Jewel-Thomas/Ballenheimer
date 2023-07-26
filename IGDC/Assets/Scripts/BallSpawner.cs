@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public interface IThrowBall{
+    void Throw();
+}
 public class BallSpawner : MonoBehaviour
 {
     // Getting reference to the ball prefab
@@ -17,13 +20,7 @@ public class BallSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Throws a ball forward when the mouse button is clicked
-        #if UNITY_EDITOR
-        if(Input.GetMouseButtonDown(0))
-        {
-            ThrowBall();
-        }
-        #endif
+        
     }
 
     public void ThrowBall()
