@@ -24,13 +24,16 @@ public class PlayerCam : MonoBehaviour
     void RotateCamera()
     {
         // Rotate the mouse and the player
+
         float mouseX = Input.GetAxisRaw("Mouse X")*sensitivity*Time.deltaTime;
         float mouseY = Input.GetAxisRaw("Mouse Y")*sensitivity*Time.deltaTime;
-
-        yRot+=mouseX;
-        xRot-=mouseY;
-        xRot = Mathf.Clamp(xRot,-60,60);
-
+        Debug.Log(Input.mousePosition);
+        if(Input.mousePosition.x > Screen.width/2)
+        {
+            yRot+=mouseX;
+            xRot-=mouseY;
+            xRot = Mathf.Clamp(xRot,-60,60);
+        }      
         transform.rotation = Quaternion.Euler(xRot,yRot,0);
         orientation.rotation = Quaternion.Euler(0,yRot,0);
     }
