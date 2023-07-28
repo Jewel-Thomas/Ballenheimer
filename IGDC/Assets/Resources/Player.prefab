@@ -45,7 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ball: {fileID: 86076702895017820, guid: 725fde202337ea9408db351e94308da4, type: 3}
+  ball2: {fileID: 0}
+  Counter: {fileID: 0}
   ballSpeed: 20
+  ball2_Speed: 20
 --- !u!1 &2186712567158223271
 GameObject:
   m_ObjectHideFlags: 0
