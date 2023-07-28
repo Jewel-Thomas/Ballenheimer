@@ -65,6 +65,7 @@ namespace StarterAssets
 		private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
 		bool isJumpTriggered = false;
+		public bool isInput = false;
 
 	
 #if ENABLE_INPUT_SYSTEM
@@ -72,7 +73,7 @@ namespace StarterAssets
 #endif
 		private CharacterController _controller;
 		private StarterAssetsInputs _input;
-		private GameObject _mainCamera;
+		[SerializeField] private GameObject _mainCamera;
 
 		private const float _threshold = 0.01f;
 
@@ -91,10 +92,6 @@ namespace StarterAssets
 		private void Awake()
 		{
 			// get a reference to our main camera
-			if (_mainCamera == null)
-			{
-				_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-			}
 		}
 
 		private void Start()
@@ -114,14 +111,17 @@ namespace StarterAssets
 
 		private void Update()
 		{
-			JumpAndGravity();
+			if(isInput)
+			{
+				JumpAndGravity();
+				Move();
+			}
 			GroundedCheck();
-			Move();
 		}
 
 		private void LateUpdate()
 		{
-			CameraRotation();
+			if(isInput)	CameraRotation();
 		}
 
 		private void GroundedCheck()
