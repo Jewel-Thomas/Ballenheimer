@@ -39,6 +39,9 @@ public class Player : MonoBehaviour,IThrowBall
     [Tooltip("Sets the ground layer that is needed for ground detection")]
     public LayerMask isItGround;
     [SerializeField] bool isGrounded;
+    [Header("Networks")]
+    [Space]
+    [SerializeField] PhotonView photonView;
     // Start is called before the first frame update
     void Start()
     {
@@ -60,12 +63,15 @@ public class Player : MonoBehaviour,IThrowBall
             Throw();
         }
 #endif
+       
+        
         // Getting Player Input Values
         PlayerInput();
         // Checks if the player is grounded using Raycast and changes the drag according to the isGrounded bool
         CheckIfGrounded();
         // Limits the player speed when it goes beyond a certain speed due to forces acting on it
         SpeedControl(); 
+        
     }
     void FixedUpdate()
     {
