@@ -22,12 +22,12 @@ public class Player : MonoBehaviour,IThrowBall
     void Update()
     {
         // Player specific throw abstract 
-        #if UNITY_EDITOR
+        /* #if UNITY_EDITOR
         if(Input.GetMouseButtonDown(0))
         {
             Throw();
         }
-        #endif
+        #endif */
         
     }
     public void Throw()
