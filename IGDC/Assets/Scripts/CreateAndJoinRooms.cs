@@ -28,8 +28,4 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
         PhotonNetwork.LoadLevel("DodgeBall");
     }
 
-    public override void OnJoinRoomFailed(short returnCode, string message) 
-    {
-        PhotonNetwork.CreateRoom(joinInput.text);
-    }
 }

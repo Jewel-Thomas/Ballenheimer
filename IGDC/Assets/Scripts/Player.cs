@@ -42,6 +42,10 @@ public class Player : MonoBehaviour,IThrowBall
     [Header("Networks")]
     [Space]
     [SerializeField] PhotonView photonView;
+
+    [Header("UI")]
+    [Space]
+    [SerializeField] GameObject canvas;
     // Start is called before the first frame update
     void Start()
     {
@@ -64,13 +68,16 @@ public class Player : MonoBehaviour,IThrowBall
         }
 #endif
        
-        
-        // Getting Player Input Values
-        PlayerInput();
-        // Checks if the player is grounded using Raycast and changes the drag according to the isGrounded bool
-        CheckIfGrounded();
-        // Limits the player speed when it goes beyond a certain speed due to forces acting on it
-        SpeedControl(); 
+        if(photonView.IsMine)
+        {
+            // Getting Player Input Values
+            PlayerInput();
+            // Checks if the player is grounded using Raycast and changes the drag according to the isGrounded bool
+            CheckIfGrounded();
+            // Limits the player speed when it goes beyond a certain speed due to forces acting on it
+            SpeedControl(); 
+            canvas.SetActive(true);
+        }
         
     }
     void FixedUpdate()

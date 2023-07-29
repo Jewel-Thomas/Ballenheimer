@@ -353,7 +353,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   isGrounded: 0
-  photonView: {fileID: 0}
+  photonView: {fileID: 1180761882188946926}
 --- !u!114 &1180761882188946926
 MonoBehaviour:
   m_ObjectHideFlags: 0
