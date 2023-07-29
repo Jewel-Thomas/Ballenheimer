@@ -46,6 +46,10 @@ public class Player : MonoBehaviour,IThrowBall
     [Header("UI")]
     [Space]
     [SerializeField] GameObject canvas;
+
+    [Header("Camera")]
+    [Space]
+    [SerializeField] Camera playerCam;
     // Start is called before the first frame update
     void Start()
     {
@@ -61,15 +65,15 @@ public class Player : MonoBehaviour,IThrowBall
     void Update()
     {
         // Player specific throw abstract 
-#if UNITY_EDITOR
-        if(Input.GetMouseButtonDown(0))
-        {
-            Throw();
-        }
-#endif
        
         if(photonView.IsMine)
         {
+#if UNITY_EDITOR
+            if(Input.GetMouseButtonDown(0))
+            {
+                Throw();
+            }
+#endif
             // Getting Player Input Values
             PlayerInput();
             // Checks if the player is grounded using Raycast and changes the drag according to the isGrounded bool
@@ -77,6 +81,7 @@ public class Player : MonoBehaviour,IThrowBall
             // Limits the player speed when it goes beyond a certain speed due to forces acting on it
             SpeedControl(); 
             canvas.SetActive(true);
+            playerCam.enabled = true;
         }
         
     }
