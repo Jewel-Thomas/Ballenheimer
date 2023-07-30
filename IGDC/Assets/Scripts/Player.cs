@@ -119,14 +119,7 @@ public class Player : MonoBehaviour,IThrowBall
     public void CheckIfGrounded()
     {
         isGrounded = Physics.Raycast(transform.position,Vector3.down,playerHeight*0.5f+0.2f,isItGround);
-        if(isGrounded)
-        {
-            rb.drag = groundDrag;
-        }
-        else
-        {
-            rb.drag = 0;
-        }
+        rb.drag = isGrounded ? groundDrag : 0; 
     }
     void SpeedControl()
     {

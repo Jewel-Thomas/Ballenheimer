@@ -742,13 +742,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3357860440231413905, guid: a6055ce892ab7244284dc37a2a93bed6, type: 3}
+      propertyPath: sceneViewId
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4942155050800009276, guid: a6055ce892ab7244284dc37a2a93bed6, type: 3}
       propertyPath: m_Name
       value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 7781808369507488964, guid: a6055ce892ab7244284dc37a2a93bed6, type: 3}
-      propertyPath: m_Mass
-      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8595968667887104342, guid: a6055ce892ab7244284dc37a2a93bed6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -865,6 +865,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1195191583149255679, guid: 8b3c9673deb86094297778e67970e8eb, type: 3}
+      propertyPath: ball
+      value: 
+      objectReference: {fileID: 4936482616891533717, guid: e24b15becc5357f42943d8b12734373e, type: 3}
     - target: {fileID: 2069979326450119092, guid: 8b3c9673deb86094297778e67970e8eb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.21
@@ -933,10 +937,6 @@ PrefabInstance:
     - target: {fileID: -7644114723016127493, guid: e24b15becc5357f42943d8b12734373e, type: 3}
       propertyPath: sceneViewId
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -7644114723016127493, guid: e24b15becc5357f42943d8b12734373e, type: 3}
-      propertyPath: ObservedComponents.Array.size
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4936482616891533717, guid: e24b15becc5357f42943d8b12734373e, type: 3}
       propertyPath: m_Name

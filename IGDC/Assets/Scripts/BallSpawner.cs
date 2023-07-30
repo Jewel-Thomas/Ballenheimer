@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public interface IThrowBall{
     void Throw();
@@ -25,7 +26,7 @@ public class BallSpawner : MonoBehaviour
 
     public void ThrowBall()
     {
-        GameObject ballInstance = Instantiate(ball,transform.position,Quaternion.identity) as GameObject;
+        GameObject ballInstance = PhotonNetwork.Instantiate(nameof(ball),transform.position,Quaternion.identity) as GameObject;
         Rigidbody ballrb = ballInstance.GetComponent<Rigidbody>();
         ballrb.AddForce(transform.forward*ballSpeed,ForceMode.Impulse);
     }
