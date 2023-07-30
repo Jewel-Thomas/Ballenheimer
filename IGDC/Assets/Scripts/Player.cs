@@ -63,6 +63,7 @@ public class Player : MonoBehaviour,IThrowBall
         {
             Destroy(canvas.gameObject);
             Destroy(playerCam.gameObject);
+            Destroy(rb);
         }
     }
 

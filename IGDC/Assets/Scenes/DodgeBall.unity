@@ -744,7 +744,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3357860440231413905, guid: a6055ce892ab7244284dc37a2a93bed6, type: 3}
       propertyPath: sceneViewId
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4942155050800009276, guid: a6055ce892ab7244284dc37a2a93bed6, type: 3}
       propertyPath: m_Name
@@ -793,32 +793,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4942155050800009276, guid: a6055ce892ab7244284dc37a2a93bed6, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2850040259393695745}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6055ce892ab7244284dc37a2a93bed6, type: 3}
---- !u!1 &2850040259393695744 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4942155050800009276, guid: a6055ce892ab7244284dc37a2a93bed6, type: 3}
-  m_PrefabInstance: {fileID: 2850040259393695743}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2850040259393695745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2850040259393695744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizeVelocity: 1
-  m_SynchronizeAngularVelocity: 0
-  m_TeleportEnabled: 0
-  m_TeleportIfDistanceGreaterThan: 3
 --- !u!108 &5060096885285093052
 Light:
   m_ObjectHideFlags: 0
@@ -931,7 +907,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4874637109818879728, guid: 8b3c9673deb86094297778e67970e8eb, type: 3}
       propertyPath: sceneViewId
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5858064830856753348, guid: 8b3c9673deb86094297778e67970e8eb, type: 3}
       propertyPath: m_Name
@@ -956,7 +932,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -7644114723016127493, guid: e24b15becc5357f42943d8b12734373e, type: 3}
       propertyPath: sceneViewId
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4936482616891533717, guid: e24b15becc5357f42943d8b12734373e, type: 3}
       propertyPath: m_Name
