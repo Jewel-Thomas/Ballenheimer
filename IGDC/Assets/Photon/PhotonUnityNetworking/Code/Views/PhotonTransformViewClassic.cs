@@ -31,7 +31,7 @@ namespace Photon.Pun
         //configure in the inspector while the "control" objects below are actually moving
         //the object and calculating all the inter- and extrapolation
 
-        [HideInInspector]
+        
         public PhotonTransformViewPositionModel m_PositionModel = new PhotonTransformViewPositionModel();
 
         [HideInInspector]

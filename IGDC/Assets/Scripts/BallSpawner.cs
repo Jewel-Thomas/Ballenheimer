@@ -8,7 +8,7 @@ public interface IThrowBall{
 }
 public class BallSpawner : MonoBehaviour
 {
-    // Getting reference to the ball prefab
+    // Getting reference to the ball prefab for network
     public GameObject ball;
     [SerializeField] float ballSpeed = 10;
 

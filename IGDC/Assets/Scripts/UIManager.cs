@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Photon.Pun;
 
 public class UIManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI fpsText; 
+    [SerializeField] TextMeshProUGUI pingText;
     float deltaTime = 0.0f;
     // Start is called before the first frame update
     void Start()
@@ -17,6 +19,7 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         CalculateFPS();
+        CalculatePing();
     }
 
     void CalculateFPS()
@@ -25,5 +28,10 @@ public class UIManager : MonoBehaviour
 		float msec = deltaTime * 1000.0f;
 		float fps = 1.0f / deltaTime;
         fpsText.text = string.Format("{0:0.0} ms ({1:0.} fps)", msec, fps);
+    }
+
+    void CalculatePing()
+    {
+        pingText.text = "Ping : " + PhotonNetwork.GetPing(); 
     }
 }
