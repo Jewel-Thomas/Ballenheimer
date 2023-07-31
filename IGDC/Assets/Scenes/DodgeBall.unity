@@ -742,9 +742,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 655368066396911794, guid: a6055ce892ab7244284dc37a2a93bed6, type: 3}
+      propertyPath: m_TeleportEnabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3357860440231413905, guid: a6055ce892ab7244284dc37a2a93bed6, type: 3}
       propertyPath: sceneViewId
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4942155050800009276, guid: a6055ce892ab7244284dc37a2a93bed6, type: 3}
       propertyPath: m_Name
@@ -917,6 +921,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6746933674084056746, guid: 8b3c9673deb86094297778e67970e8eb, type: 3}
+      propertyPath: m_SynchronizeAngularVelocity
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -932,15 +940,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -7644114723016127493, guid: e24b15becc5357f42943d8b12734373e, type: 3}
       propertyPath: sceneViewId
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4936482616891533717, guid: e24b15becc5357f42943d8b12734373e, type: 3}
       propertyPath: m_Name
       value: Ball
-      objectReference: {fileID: 0}
-    - target: {fileID: 4936482616891533717, guid: e24b15becc5357f42943d8b12734373e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6563884562948251057, guid: e24b15becc5357f42943d8b12734373e, type: 3}
       propertyPath: m_LocalPosition.x

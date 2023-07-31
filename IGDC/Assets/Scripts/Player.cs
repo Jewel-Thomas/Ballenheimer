@@ -63,7 +63,6 @@ public class Player : MonoBehaviour,IThrowBall
         {
             Destroy(canvas.gameObject);
             Destroy(playerCam.gameObject);
-            Destroy(rb);
         }
     }
 
@@ -94,6 +93,7 @@ public class Player : MonoBehaviour,IThrowBall
     }
     void FixedUpdate()
     {
+        if(!photonView.IsMine) return;
         // Deals with the First Person movement
         Move();
     }

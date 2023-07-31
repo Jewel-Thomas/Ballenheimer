@@ -13,13 +13,10 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        photonView = GetComponent<PhotonView>();
         resetPos = enemy.transform.position; 
         resetRot = new Vector3(0,180,0.00199556327f);
         rb = GetComponent<Rigidbody>();
-        if(!photonView.IsMine)
-        {
-            Destroy(rb);
-        }
     }
 
     // Update is called once per frame
