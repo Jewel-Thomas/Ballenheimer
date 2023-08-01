@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-public class Player : MonoBehaviour,IThrowBall
+public class Player : MonoBehaviour,IThrowBall,Ihealth
 {
     [SerializeField] BallSpawner ballSpawner;
     CharacterController characterController;
@@ -25,6 +25,10 @@ public class Player : MonoBehaviour,IThrowBall
     private float verticalInput;
     Vector3 moveDirection;
     Rigidbody rb;
+
+    [Header("Health")]
+    [Space]
+    [SerializeField] float health;
 
     [Header("Keybinds")]
     [Space]
@@ -53,6 +57,7 @@ public class Player : MonoBehaviour,IThrowBall
     // Start is called before the first frame update
     void Start()
     {
+        health = 100;
         Application.targetFrameRate = 60;
         QualitySettings.vSyncCount = 1;
         QualitySettings.pixelLightCount = 6;
@@ -127,6 +132,16 @@ public class Player : MonoBehaviour,IThrowBall
             rb.velocity = new Vector3(limitSpeed.x,rb.velocity.y,limitSpeed.z);
         }
     }
+    public void JumpUI()
+    {
+        if(isGrounded && isReadyToJump)
+        {
+            isReadyToJump = false;
+            Jump();
+            // Continuous Jump if the JumpKey is Held down
+            Invoke(nameof(ResetJump),jumpCoolDown);
+        }
+    }
     void Jump()
     {
         rb.velocity = new Vector3(rb.velocity.x,0,rb.velocity.z);
@@ -135,6 +150,14 @@ public class Player : MonoBehaviour,IThrowBall
     void ResetJump()
     {
         isReadyToJump = true;
+    }
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+    }
+    public float GetHealth()
+    {
+        return health;
     }
     public void Throw()
     {
