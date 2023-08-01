@@ -5,13 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Loading Scene.unity
     guid: 92b490817ea8a0143a7eccd75f57e470
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Lobby.unity
     guid: ce9ca7b3a72112f47805c209ee57a61f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/DodgeBall.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/DodgeBall AI.unity
+    guid: 872ee18e17bf267439f8213cc706f507
   m_configObjects: {}

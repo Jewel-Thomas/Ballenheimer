@@ -27,7 +27,6 @@ public class PlayerCam : MonoBehaviour
 
         float mouseX = Input.GetAxisRaw("Mouse X")*sensitivity*Time.deltaTime;
         float mouseY = Input.GetAxisRaw("Mouse Y")*sensitivity*Time.deltaTime;
-        Debug.Log(Input.mousePosition);
 #if UNITY_EDITOR
         yRot+=mouseX;
         xRot-=mouseY;

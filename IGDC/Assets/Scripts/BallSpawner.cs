@@ -26,9 +26,16 @@ public class BallSpawner : MonoBehaviour
 
     public void ThrowBall()
     {
-        GameObject ballInstance = PhotonNetwork.Instantiate(nameof(ball),transform.position,Quaternion.identity) as GameObject;
+        GameObject ballInstance = Instantiate(ball,transform.position,Quaternion.identity) as GameObject;
         Rigidbody ballrb = ballInstance.GetComponent<Rigidbody>();
         ballrb.AddForce(transform.forward*ballSpeed,ForceMode.Impulse);
+    }
+
+    public void ThrowBall(float strength)
+    {
+        GameObject ballInstance = Instantiate(ball,transform.position,Quaternion.identity) as GameObject;
+        Rigidbody ballrb = ballInstance.GetComponent<Rigidbody>();
+        ballrb.AddForce(transform.forward*ballSpeed*strength,ForceMode.Impulse);
     }
 
 }

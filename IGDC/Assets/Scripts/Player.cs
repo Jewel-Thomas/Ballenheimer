@@ -59,11 +59,6 @@ public class Player : MonoBehaviour,IThrowBall
         characterController = GetComponent<CharacterController>();
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
-        if(!photonView.IsMine)
-        {
-            Destroy(canvas.gameObject);
-            Destroy(playerCam.gameObject);
-        }
     }
 
     // Update is called once per frame
@@ -71,10 +66,6 @@ public class Player : MonoBehaviour,IThrowBall
     {
         // Player specific throw abstract 
        
-        if(!photonView.IsMine)
-        {
-            return;
-        }
 #if UNITY_EDITOR
             if(Input.GetMouseButtonDown(0))
             {
@@ -93,7 +84,6 @@ public class Player : MonoBehaviour,IThrowBall
     }
     void FixedUpdate()
     {
-        if(!photonView.IsMine) return;
         // Deals with the First Person movement
         Move();
     }
