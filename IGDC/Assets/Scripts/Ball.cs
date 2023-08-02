@@ -27,15 +27,15 @@ public class Ball : MonoBehaviour
 
             if(other.gameObject.CompareTag("Player") && !isPlayer)
             {
-                other.gameObject.GetComponent<Player>().TakeDamage(5);
                 float health = other.gameObject.GetComponent<Player>().GetHealth();
                 GameObject parentObject = other.gameObject.GetComponent<Player>().parent;
-                UIManager uIManager = other.gameObject.GetComponent<Player>().canvas.GetComponent<UIManager>(); 
-                uIManager.ChangeColor();
                 if(health<=0)
                 {
                     Destroy(parentObject);
                 }
+                other.gameObject.GetComponent<Player>().TakeDamage(5);
+                UIManager uIManager = other.gameObject.GetComponent<Player>().canvas.GetComponent<UIManager>(); 
+                uIManager.ChangeColor();
             }
         }
         catch

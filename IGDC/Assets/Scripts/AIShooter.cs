@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using TMPro;
 
 public class AIShooter : MonoBehaviour,IThrowBall,Ihealth
 {
@@ -11,6 +12,8 @@ public class AIShooter : MonoBehaviour,IThrowBall,Ihealth
     [SerializeField] GameObject player;
     Rigidbody rb;
     [SerializeField] float health = 100;
+    [SerializeField] TextMeshProUGUI overText;
+
     float randomTime;
     // Start is called before the first frame update
     void Start()
@@ -28,6 +31,7 @@ public class AIShooter : MonoBehaviour,IThrowBall,Ihealth
         try{
             Transform playerPos = player.transform;
             navMeshAgent.destination = playerPos.position;
+            overText.text = $"Health : {health}";
         }
         catch
         {

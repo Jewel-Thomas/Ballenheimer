@@ -14,6 +14,8 @@ public class UIManager : MonoBehaviour
     Color tempColor;
     [SerializeField] AudioSource bgm;
     bool isPaused = false;
+    [SerializeField] GameObject pausedPanel;
+    [SerializeField] GameObject otherUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -56,11 +58,15 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 0;
         bgm.Pause();
+        pausedPanel.SetActive(true);
+        otherUI.SetActive(false);
     }
     void Resume()
     {
         Time.timeScale = 1;
         bgm.Play();
+        pausedPanel.SetActive(false);
+        otherUI.SetActive(true);
     }
 
     public void ChangeHealthText()
