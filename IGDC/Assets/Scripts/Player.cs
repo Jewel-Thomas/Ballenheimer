@@ -158,7 +158,7 @@ public class Player : MonoBehaviour,IThrowBall,Ihealth
     }
     public void Throw()
     {
-        ballSpawner.ThrowBall();
+        ballSpawner.ThrowBall(1,true);
     }
 
 }

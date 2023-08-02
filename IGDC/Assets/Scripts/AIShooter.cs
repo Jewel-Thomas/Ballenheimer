@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AIShooter : MonoBehaviour,IThrowBall
+public class AIShooter : MonoBehaviour,IThrowBall,Ihealth
 {
     NavMeshAgent navMeshAgent;
     [Range(1,10000)] [SerializeField] float speed;
     [SerializeField] BallSpawner ballSpawner;
     [SerializeField] GameObject player;
     Rigidbody rb;
+    [SerializeField] float health = 100;
     float randomTime;
     // Start is called before the first frame update
     void Start()
     {
+        health = 100;
         randomTime = Random.Range(0.5f,2);
         navMeshAgent = GetComponent<NavMeshAgent>();
         InvokeRepeating(nameof(Throw),randomTime,randomTime);
@@ -48,5 +50,13 @@ public class AIShooter : MonoBehaviour,IThrowBall
     {
         float strength = Random.Range(2,10);
         ballSpawner.ThrowBall(strength);
+    }
+    public float GetHealth()
+    {
+        return health;
+    }
+    public void TakeDamage(float amount)
+    {
+        health-=amount;
     }
 }

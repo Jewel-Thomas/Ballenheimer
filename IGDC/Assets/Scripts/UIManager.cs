@@ -12,6 +12,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI healthText;
     float deltaTime = 0.0f;
     Color tempColor;
+    [SerializeField] AudioSource bgm;
+    bool isPaused = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,16 @@ public class UIManager : MonoBehaviour
         CalculateFPS();
         CalculatePing();
         ChangeHealthText();
+        if(!isPaused && Input.GetKeyDown(KeyCode.Escape))
+        {
+            Pause();
+            isPaused = !isPaused;
+        }
+        else if(isPaused && Input.GetKeyDown(KeyCode.Escape))
+        {
+            Resume();
+            isPaused = !isPaused;
+        }
     }
 
     void CalculateFPS()
@@ -38,6 +50,17 @@ public class UIManager : MonoBehaviour
     void CalculatePing()
     {
         pingText.text = "Ping : " + PhotonNetwork.GetPing(); 
+    }
+
+    void Pause()
+    {
+        Time.timeScale = 0;
+        bgm.Pause();
+    }
+    void Resume()
+    {
+        Time.timeScale = 1;
+        bgm.Play();
     }
 
     public void ChangeHealthText()

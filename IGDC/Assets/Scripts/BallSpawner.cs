@@ -24,12 +24,12 @@ public class BallSpawner : MonoBehaviour
         
     }
 
-    public void ThrowBall()
+    public void ThrowBall(float strength,bool isThisPlayer)
     {
         GameObject ballInstance = Instantiate(ball,transform.position,Quaternion.identity) as GameObject;
         Rigidbody ballrb = ballInstance.GetComponent<Rigidbody>();
-        ballrb.AddForce(transform.forward*ballSpeed,ForceMode.Impulse);
-        ballInstance.GetComponent<Ball>().isPlayer = true;
+        ballrb.AddForce(transform.forward*ballSpeed*strength,ForceMode.Impulse);
+        if(isThisPlayer) ballInstance.GetComponent<Ball>().isPlayer = true;
     }
 
     public void ThrowBall(float strength)

@@ -23,24 +23,39 @@ public class Ball : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        if(other.gameObject.CompareTag("Player") && !isPlayer)
-        {
-            other.gameObject.GetComponent<Player>().TakeDamage(5);
-            float health = other.gameObject.GetComponent<Player>().GetHealth();
-            GameObject parentObject = other.gameObject.GetComponent<Player>().parent;
-            UIManager uIManager = other.gameObject.GetComponent<Player>().canvas.GetComponent<UIManager>(); 
-            uIManager.ChangeColor();
-            if(health<=0)
+        try{
+
+            if(other.gameObject.CompareTag("Player") && !isPlayer)
             {
-                Destroy(parentObject);
+                other.gameObject.GetComponent<Player>().TakeDamage(5);
+                float health = other.gameObject.GetComponent<Player>().GetHealth();
+                GameObject parentObject = other.gameObject.GetComponent<Player>().parent;
+                UIManager uIManager = other.gameObject.GetComponent<Player>().canvas.GetComponent<UIManager>(); 
+                uIManager.ChangeColor();
+                if(health<=0)
+                {
+                    Destroy(parentObject);
+                }
             }
+        }
+        catch
+        {
+
         }
         if(other.gameObject.CompareTag("AI") && isPlayer)
         {
-            Destroy(other.gameObject);
-            Destroy(this.gameObject);
-            Debug.Log("Added score!");
-            ScoreManager.Instance.AddScore(5);
+            float health = other.gameObject.GetComponent<AIShooter>().GetHealth();
+            if(health > 0)
+            {
+                other.gameObject.GetComponent<AIShooter>().TakeDamage(5);
+            }
+            else
+            {
+                other.gameObject.GetComponent<AIShooter>().CancelInvoke();
+                other.gameObject.SetActive(false);
+                Destroy(this.gameObject);
+                ScoreManager.Instance.AddScore(5);
+            }
         }
     }
 }
