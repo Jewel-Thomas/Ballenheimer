@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
 public class Player : MonoBehaviour,IThrowBall,Ihealth
 {
     [SerializeField] BallSpawner ballSpawner;
@@ -44,10 +43,7 @@ public class Player : MonoBehaviour,IThrowBall,Ihealth
     [Tooltip("Sets the ground layer that is needed for ground detection")]
     public LayerMask isItGround;
     [SerializeField] bool isGrounded;
-    [Header("Networks")]
-    [Space]
-    [SerializeField] PhotonView photonView;
-
+   
     [Header("UI")]
     [Space]
     public GameObject canvas;
