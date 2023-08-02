@@ -23,12 +23,15 @@ public class AIShooter : MonoBehaviour,IThrowBall
     // Update is called once per frame
     void Update()
     {
-        Transform playerPos = player.transform;
-        navMeshAgent.destination = playerPos.position;
-        // Vector3 direction = (playerPos.transform.position - transform.position).normalized;
-        //transform.LookAt(playerPos);
-        // rb.AddForce(transform.forward*speed*Time.deltaTime,ForceMode.Force);
-        // SpeedControl();
+        try{
+            Transform playerPos = player.transform;
+            navMeshAgent.destination = playerPos.position;
+        }
+        catch
+        {
+            navMeshAgent.enabled = false;
+            CancelInvoke(nameof(Throw));
+        }
     }
 
     void SpeedControl()

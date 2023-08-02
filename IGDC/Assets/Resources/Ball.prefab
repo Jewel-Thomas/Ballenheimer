@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1326286933205732305}
   - component: {fileID: 5607426135318746724}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 7122097832188396225}
   - component: {fileID: 1692704567643984491}
   - component: {fileID: 4978049248436963988}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,6 +215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyAfter: 3
+  isPlayer: 0
 --- !u!54 &4978049248436963988
 Rigidbody:
   m_ObjectHideFlags: 0

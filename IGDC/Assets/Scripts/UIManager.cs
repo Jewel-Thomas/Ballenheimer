@@ -6,13 +6,17 @@ using Photon.Pun;
 
 public class UIManager : MonoBehaviour
 {
+    [SerializeField] Player player;
     [SerializeField] TextMeshProUGUI fpsText; 
     [SerializeField] TextMeshProUGUI pingText;
+    [SerializeField] TextMeshProUGUI healthText;
     float deltaTime = 0.0f;
+    Color tempColor;
     // Start is called before the first frame update
     void Start()
     {
-        
+        tempColor.b = 0;
+        tempColor.a = 1;
     }
 
     // Update is called once per frame
@@ -20,6 +24,7 @@ public class UIManager : MonoBehaviour
     {
         CalculateFPS();
         CalculatePing();
+        ChangeHealthText();
     }
 
     void CalculateFPS()
@@ -33,5 +38,19 @@ public class UIManager : MonoBehaviour
     void CalculatePing()
     {
         pingText.text = "Ping : " + PhotonNetwork.GetPing(); 
+    }
+
+    public void ChangeHealthText()
+    {
+        float currentHealth = player.GetHealth();
+        healthText.text = $"Health : {currentHealth}";
+    }
+
+    public void ChangeColor()
+    {
+        float currentHealth = player.GetHealth();
+        tempColor.r = (100-currentHealth)/100;
+        tempColor.g = currentHealth/100;
+        healthText.color = tempColor;
     }
 }

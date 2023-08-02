@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+
 public class Ball : MonoBehaviour
 {
     [SerializeField] float destroyAfter = 10;
@@ -26,15 +27,20 @@ public class Ball : MonoBehaviour
         {
             other.gameObject.GetComponent<Player>().TakeDamage(5);
             float health = other.gameObject.GetComponent<Player>().GetHealth();
+            GameObject parentObject = other.gameObject.GetComponent<Player>().parent;
+            UIManager uIManager = other.gameObject.GetComponent<Player>().canvas.GetComponent<UIManager>(); 
+            uIManager.ChangeColor();
             if(health<=0)
             {
-                Destroy(other.gameObject);
+                Destroy(parentObject);
             }
         }
         if(other.gameObject.CompareTag("AI") && isPlayer)
         {
             Destroy(other.gameObject);
             Destroy(this.gameObject);
+            Debug.Log("Added score!");
+            ScoreManager.Instance.AddScore(5);
         }
     }
 }

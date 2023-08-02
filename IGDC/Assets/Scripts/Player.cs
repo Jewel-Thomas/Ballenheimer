@@ -6,6 +6,7 @@ public class Player : MonoBehaviour,IThrowBall,Ihealth
 {
     [SerializeField] BallSpawner ballSpawner;
     CharacterController characterController;
+    public GameObject parent;
 
     [Header("Movement")]
     [Space]
@@ -49,11 +50,11 @@ public class Player : MonoBehaviour,IThrowBall,Ihealth
 
     [Header("UI")]
     [Space]
-    [SerializeField] GameObject canvas;
+    public GameObject canvas;
 
     [Header("Camera")]
     [Space]
-    [SerializeField] Camera playerCam;
+    public Camera playerCam;
     // Start is called before the first frame update
     void Start()
     {
