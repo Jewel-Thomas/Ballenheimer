@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using TMPro;
 
 public class PlayerAI : MonoBehaviour,IThrowBall
 {
@@ -9,6 +10,8 @@ public class PlayerAI : MonoBehaviour,IThrowBall
     [SerializeField] GameObject currentTarget;
     NavMeshAgent navMeshAgent;
     [SerializeField] BallSpawner ballSpawner;
+    public TextMeshProUGUI warnText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,7 +62,13 @@ public class PlayerAI : MonoBehaviour,IThrowBall
     public void Throw()
     {
         float strength = Random.Range(2,5);
-        ballSpawner.ThrowBall(strength,true);
+        ballSpawner.ThrowBall(strength,true,this.gameObject);
+    }
+
+    public IEnumerator WarnShooter()
+    {
+        yield return new WaitForSeconds(2);
+        warnText.text = "";
     }
 
 }

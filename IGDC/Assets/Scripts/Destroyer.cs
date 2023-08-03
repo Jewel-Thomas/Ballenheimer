@@ -23,6 +23,10 @@ public class Destroyer : MonoBehaviour
         {
             spawnPlayers.RandomPosition();
         }
+        else if(other.CompareTag("AI"))
+        {
+            spawnPlayers.RandomPosition();
+        }
         else
         {
             Destroy(other.gameObject);

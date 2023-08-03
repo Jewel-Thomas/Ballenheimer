@@ -9,6 +9,7 @@ public class Ball : MonoBehaviour
     [SerializeField] float destroyAfter = 10;
     Rigidbody ballRb;
     public bool isPlayer = false;
+    public GameObject shootPerson;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +24,16 @@ public class Ball : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
+        try{
+            if(other.gameObject.CompareTag("Player") && isPlayer)
+            {
+                other.gameObject.GetComponent<PlayerAI>().warnText.text = $"Shoot the enemy you Drunkart @{shootPerson.name}";
+                StartCoroutine(other.gameObject.GetComponent<PlayerAI>().WarnShooter());
+            }
+        }
+        catch{
+
+        }
         try{
 
             if(other.gameObject.CompareTag("Player") && !isPlayer)
@@ -58,4 +69,5 @@ public class Ball : MonoBehaviour
             }
         }
     }
+
 }
