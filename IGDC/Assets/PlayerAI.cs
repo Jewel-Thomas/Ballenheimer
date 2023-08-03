@@ -29,7 +29,9 @@ public class PlayerAI : MonoBehaviour,IThrowBall,Ihealth
         FindTarget();
         if(health <= 0)
         {
-            Destroy(this.gameObject);
+            targetList.Remove(this.gameObject);
+            CancelInvoke();
+            gameObject.SetActive(false);
         }
     }
 

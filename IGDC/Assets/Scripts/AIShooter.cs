@@ -9,6 +9,8 @@ public class AIShooter : MonoBehaviour,IThrowBall,Ihealth
     NavMeshAgent navMeshAgent;
     [Range(1,10000)] [SerializeField] float speed;
     [SerializeField] BallSpawner ballSpawner;
+    [SerializeField] List<GameObject> targetList;
+    [SerializeField] GameObject currentTarget;
     [SerializeField] GameObject player;
     Rigidbody rb;
     [SerializeField] float health = 100;
@@ -28,9 +30,11 @@ public class AIShooter : MonoBehaviour,IThrowBall,Ihealth
     // Update is called once per frame
     void Update()
     {
+        MoveTowardsTarget();
+        FindTarget();
         try{
-            Transform playerPos = player.transform;
-            navMeshAgent.destination = playerPos.position;
+            // Transform playerPos = player.transform;
+            // navMeshAgent.destination = playerPos.position;
             overText.text = $"Health : {health}";
         }
         catch
@@ -40,13 +44,36 @@ public class AIShooter : MonoBehaviour,IThrowBall,Ihealth
         }
     }
 
-    void SpeedControl()
+    void MoveTowardsTarget()
     {
-        Vector3 flatVel = new Vector3(rb.velocity.x,0,rb.velocity.z);
-        if(flatVel.magnitude > speed)
+        try{
+            if(!currentTarget.activeInHierarchy && targetList!=null)
+            {
+                if(targetList.Count == 1) CancelInvoke();
+                targetList.Remove(currentTarget);
+            }
+            if(targetList.Count==0)
+            {
+                CancelInvoke();
+            }
+            navMeshAgent.destination = currentTarget.transform.position;
+        }
+        catch{
+            
+        }
+    }
+
+
+    void FindTarget()
+    {
+        float min = Mathf.Infinity;
+        foreach (var target in targetList)
         {
-            Vector3 limitSpeed = flatVel.normalized * speed;
-            rb.velocity = new Vector3(limitSpeed.x,rb.velocity.y,limitSpeed.z);
+            if(Vector3.Distance(this.transform.position,target.transform.position) < min)
+            {
+                min = Vector3.Distance(this.transform.position,target.transform.position);
+                currentTarget = target;
+            }
         }
     }
 
