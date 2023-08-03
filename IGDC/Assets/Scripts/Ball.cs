@@ -42,6 +42,7 @@ public class Ball : MonoBehaviour
                     float health = other.gameObject.GetComponent<Player>().GetHealth();
                     GameObject parentObject = other.gameObject.GetComponent<Player>().parent;
                     other.gameObject.GetComponent<Player>().TakeDamage(5);
+                    UIManager.redHealth-=5;
                     UIManager uIManager = other.gameObject.GetComponent<Player>().canvas.GetComponent<UIManager>(); 
                     uIManager.ChangeColor();
                     if(health<5)
@@ -51,6 +52,7 @@ public class Ball : MonoBehaviour
                 }
                 catch{
                     other.gameObject.GetComponent<PlayerAI>().TakeDamage(5);
+                    UIManager.redHealth-=5;
                 }
             }
         }
@@ -64,13 +66,15 @@ public class Ball : MonoBehaviour
             if(health > 0)
             {
                 other.gameObject.GetComponent<AIShooter>().TakeDamage(5);
-            }
-            else
-            {
-                other.gameObject.GetComponent<AIShooter>().CancelInvoke();
-                other.gameObject.SetActive(false);
-                Destroy(this.gameObject);
-                ScoreManager.Instance.AddScore(5);
+                health = other.gameObject.GetComponent<AIShooter>().GetHealth();
+                UIManager.blueHealth-=5;
+                if(health<=0)
+                {
+                    other.gameObject.GetComponent<AIShooter>().CancelInvoke();
+                    other.gameObject.SetActive(false);
+                    Destroy(this.gameObject);
+                    ScoreManager.Instance.AddScore(5);
+                }
             }
         }
     }

@@ -16,9 +16,15 @@ public class UIManager : MonoBehaviour
     bool isPaused = false;
     [SerializeField] GameObject pausedPanel;
     [SerializeField] GameObject otherUI;
+    public static float redHealth;
+    public static float blueHealth;
+    [SerializeField] TextMeshProUGUI redHealthText;
+    [SerializeField] TextMeshProUGUI blueHealthText;
     // Start is called before the first frame update
     void Start()
     {
+        redHealth = 1100;
+        blueHealth = 1600;
         tempColor.b = 0;
         tempColor.a = 1;
     }
@@ -73,6 +79,8 @@ public class UIManager : MonoBehaviour
     {
         float currentHealth = player.GetHealth();
         healthText.text = $"Health : {currentHealth}";
+        redHealthText.text = $"Red Health : {redHealth}";
+        blueHealthText.text = $"Blue Health : {blueHealth}"; 
     }
 
     public void ChangeColor()
