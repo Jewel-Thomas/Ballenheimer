@@ -4,17 +4,19 @@ using UnityEngine;
 using UnityEngine.AI;
 using TMPro;
 
-public class PlayerAI : MonoBehaviour,IThrowBall
+public class PlayerAI : MonoBehaviour,IThrowBall,Ihealth
 {
     [SerializeField] List<GameObject> targetList;
     [SerializeField] GameObject currentTarget;
     NavMeshAgent navMeshAgent;
     [SerializeField] BallSpawner ballSpawner;
     public TextMeshProUGUI warnText;
+    [SerializeField] float health;
 
     // Start is called before the first frame update
     void Start()
     {
+        health = 100;
         float randomTime = Random.Range(0.5f,2);
         navMeshAgent = GetComponent<NavMeshAgent>();
         InvokeRepeating(nameof(Throw),randomTime,randomTime);
@@ -25,6 +27,10 @@ public class PlayerAI : MonoBehaviour,IThrowBall
     {
         MoveTowardsTarget();
         FindTarget();
+        if(health <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     void MoveTowardsTarget()
@@ -63,6 +69,10 @@ public class PlayerAI : MonoBehaviour,IThrowBall
     {
         float strength = Random.Range(2,5);
         ballSpawner.ThrowBall(strength,true,this.gameObject);
+    }
+    public void TakeDamage(float amount)
+    {
+        health-=amount;
     }
 
     public IEnumerator WarnShooter()
