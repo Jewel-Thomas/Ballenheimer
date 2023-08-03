@@ -41,13 +41,13 @@ public class Ball : MonoBehaviour
                 try{
                     float health = other.gameObject.GetComponent<Player>().GetHealth();
                     GameObject parentObject = other.gameObject.GetComponent<Player>().parent;
-                    if(health<=5)
-                    {
-                        parentObject.SetActive(false);
-                    }
                     other.gameObject.GetComponent<Player>().TakeDamage(5);
                     UIManager uIManager = other.gameObject.GetComponent<Player>().canvas.GetComponent<UIManager>(); 
                     uIManager.ChangeColor();
+                    if(health<5)
+                    {
+                        parentObject.SetActive(false);
+                    }
                 }
                 catch{
                     other.gameObject.GetComponent<PlayerAI>().TakeDamage(5);
