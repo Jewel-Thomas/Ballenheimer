@@ -12,6 +12,7 @@ public class PlayerAI : MonoBehaviour,IThrowBall,Ihealth
     [SerializeField] BallSpawner ballSpawner;
     public TextMeshProUGUI warnText;
     [SerializeField] float health;
+    public AudioClip playerAIAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,7 @@ public class PlayerAI : MonoBehaviour,IThrowBall,Ihealth
         FindTarget();
         if(health <= 0)
         {
+            UIManager.audioSource.PlayOneShot(playerAIAudio);
             targetList.Remove(this.gameObject);
             CancelInvoke();
             gameObject.SetActive(false);

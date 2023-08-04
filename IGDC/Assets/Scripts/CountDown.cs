@@ -16,6 +16,8 @@ public class CountDown : MonoBehaviour
     void Start()
     {
         StartCoroutine(CountDownStarter());
+        UIManager.redHealth = playerAIs.Count*100+100;
+        UIManager.blueHealth = aIShooters.Count*100;
     }
 
     IEnumerator CountDownStarter()

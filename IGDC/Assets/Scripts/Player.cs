@@ -51,6 +51,10 @@ public class Player : MonoBehaviour,IThrowBall,Ihealth
     [Header("Camera")]
     [Space]
     public Camera playerCam;
+
+    [Header("Audio")]
+    [Space]
+    public AudioClip playerAudio;
     // Start is called before the first frame update
     void Start()
     {

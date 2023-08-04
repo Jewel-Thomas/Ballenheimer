@@ -20,13 +20,13 @@ public class UIManager : MonoBehaviour
     public static float blueHealth;
     [SerializeField] TextMeshProUGUI redHealthText;
     [SerializeField] TextMeshProUGUI blueHealthText;
+    public static AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
-        redHealth = 1100;
-        blueHealth = 1600;
         tempColor.b = 0;
         tempColor.a = 1;
+        audioSource = bgm;
     }
 
     // Update is called once per frame

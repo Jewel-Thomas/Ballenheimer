@@ -47,6 +47,7 @@ public class Ball : MonoBehaviour
                     uIManager.ChangeColor();
                     if(health<5)
                     {
+                        UIManager.audioSource.PlayOneShot(other.gameObject.GetComponent<Player>().playerAudio);
                         parentObject.SetActive(false);
                     }
                 }
@@ -70,6 +71,7 @@ public class Ball : MonoBehaviour
                 UIManager.blueHealth-=5;
                 if(health<=0)
                 {
+                    UIManager.audioSource.PlayOneShot(other.gameObject.GetComponent<AIShooter>().audioClip);
                     other.gameObject.GetComponent<AIShooter>().CancelInvoke();
                     other.gameObject.SetActive(false);
                     Destroy(this.gameObject);
