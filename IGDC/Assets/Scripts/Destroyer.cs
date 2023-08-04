@@ -19,17 +19,17 @@ public class Destroyer : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
-        {
-            spawnPlayers.RandomPosition();
-        }
-        else if(other.CompareTag("AI"))
-        {
-            spawnPlayers.RandomPosition();
-        }
-        else
-        {
-            Destroy(other.gameObject);
-        }
+        // if(other.CompareTag("Player"))
+        // {
+        //     spawnPlayers.RandomPosition();
+        // }
+        // else if(other.CompareTag("AI"))
+        // {
+        //     spawnPlayers.RandomPosition();
+        // }
+        // else
+        // {
+        //     Destroy(other.gameObject);
+        // }
     }
 }
