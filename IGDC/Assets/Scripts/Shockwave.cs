@@ -20,10 +20,15 @@ public class Shockwave : MonoBehaviour
         linerender = GetComponent<LineRenderer>(); //sets the number of points for line renderer to make a circle
         linerender.positionCount = points + 1;
     }
-
+    void Start()
+    {
+        StartCoroutine(Blast());
+        Destroy(this.gameObject,destroyIn);
+    }
     private IEnumerator Blast() //responsible for blast effect
     {
         float currentRadius = 0f; // finds the current radius of shockwave
+        GiveDamage(maxRadius);
         while(currentRadius < maxRadius)
         {
             currentRadius += Time.deltaTime * speed; //increases the radius till it reaches the target radius
@@ -40,14 +45,34 @@ public class Shockwave : MonoBehaviour
         for(int i = 0; i < hittingObjects.Length; i++)
         {
             Rigidbody rb = hittingObjects[i].GetComponent<Rigidbody>();
-
             if(!rb)
             {
                 continue;
             }
-
             Vector3 direction = (hittingObjects[i].transform.position - transform.position).normalized;
             rb.AddForce(direction * force, ForceMode.Impulse); //adds an impulse to every object that comes into contact
+        }
+    }
+
+    private void GiveDamage(float damageRadius)
+    {
+        Collider[] hittingObjects = Physics.OverlapSphere(transform.position, damageRadius);
+        for(int i=0;i<hittingObjects.Length;i++)
+        {
+            if(hittingObjects[i].gameObject.CompareTag("AI"))
+            {
+                float AIheath = hittingObjects[i].gameObject.GetComponent<AIShooter>().GetHealth();
+                if(AIheath >= 30)
+                {
+                    hittingObjects[i].gameObject.GetComponent<AIShooter>().TakeDamage(30);
+                    UIManager.blueHealth-=30;
+                }
+                else
+                {
+                    hittingObjects[i].gameObject.GetComponent<AIShooter>().TakeDamage(AIheath);
+                    UIManager.blueHealth-=AIheath;
+                }
+            }
         }
     }
 
@@ -72,8 +97,7 @@ public class Shockwave : MonoBehaviour
     {
         //if(Input.GetKeyDown("space")) //Shockwave starts on pressing space
         //{
-            StartCoroutine(Blast());
-            Destroy(this.gameObject,destroyIn);
+            
         //}
         
     }

@@ -151,10 +151,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 10
-  maxRadius: 5
-  speed: 8
-  startWidth: 2
-  force: 15
+  maxRadius: 20
+  speed: 15
+  startWidth: 5
+  force: 250
   destroyIn: 1
 --- !u!1 &1237844011920491561
 GameObject:

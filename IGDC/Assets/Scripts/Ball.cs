@@ -69,14 +69,6 @@ public class Ball : MonoBehaviour
                 other.gameObject.GetComponent<AIShooter>().TakeDamage(5);
                 health = other.gameObject.GetComponent<AIShooter>().GetHealth();
                 UIManager.blueHealth-=5;
-                if(health<=0)
-                {
-                    UIManager.audioSource.PlayOneShot(other.gameObject.GetComponent<AIShooter>().shooterAIAudio);
-                    other.gameObject.GetComponent<AIShooter>().CancelInvoke();
-                    other.gameObject.SetActive(false);
-                    Destroy(this.gameObject);
-                    ScoreManager.Instance.AddScore(5);
-                }
             }
         }
     }

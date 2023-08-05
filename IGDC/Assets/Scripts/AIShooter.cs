@@ -33,6 +33,13 @@ public class AIShooter : MonoBehaviour,IThrowBall,Ihealth
     {
         MoveTowardsTarget();
         FindTarget();
+        if(health <= 0)
+        {
+            UIManager.audioSource.PlayOneShot(shooterAIAudio);
+            CancelInvoke();
+            ScoreManager.Instance.AddScore(5);
+            gameObject.SetActive(false);
+        }
         try{
             // Transform playerPos = player.transform;
             // navMeshAgent.destination = playerPos.position;

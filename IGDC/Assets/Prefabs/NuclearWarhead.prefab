@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5765619244903623448}
   - component: {fileID: 3212750209111280264}
   - component: {fileID: 6247128057395350803}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4e642437c24982f4aa496e62c5965afd, type: 2}
+  - {fileID: 2100000, guid: 9892be90fb0310142b436506ae133a8e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 7831857212920679765}
   - component: {fileID: 550309932918825767}
   - component: {fileID: 3360809365510545529}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: NuclearWarhead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,7 +252,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 679cd20c4fc086e4c842bcd74b04c9ce, type: 2}
+  - {fileID: 2100000, guid: b928da74ebd98454c982b18a4b331588, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
