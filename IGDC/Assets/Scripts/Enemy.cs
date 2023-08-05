@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class Enemy : MonoBehaviour
 {
@@ -8,9 +9,11 @@ public class Enemy : MonoBehaviour
     Rigidbody rb;
     Vector3 resetPos;
     Vector3 resetRot;
+    PhotonView photonView;
     // Start is called before the first frame update
     void Start()
     {
+        photonView = GetComponent<PhotonView>();
         resetPos = enemy.transform.position; 
         resetRot = new Vector3(0,180,0.00199556327f);
         rb = GetComponent<Rigidbody>();

@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public interface IThrowBall{
     void Throw();
 }
 public class BallSpawner : MonoBehaviour
 {
-    // Getting reference to the ball prefab
-    public GameObject ball,ball2, Counter;
+    // Getting reference to the ball prefab for network
+    public GameObject ball;
     [SerializeField] float ballSpeed = 10;
-    [SerializeField] float ball2_Speed = 20;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,21 +24,20 @@ public class BallSpawner : MonoBehaviour
         
     }
 
-    public void ThrowBall()
+    public void ThrowBall(float strength,bool isThisPlayer,GameObject shooter)
     {
         GameObject ballInstance = Instantiate(ball,transform.position,Quaternion.identity) as GameObject;
         Rigidbody ballrb = ballInstance.GetComponent<Rigidbody>();
-        ballrb.AddForce(transform.forward*ballSpeed,ForceMode.Impulse);
+        ballrb.AddForce(transform.forward*ballSpeed*strength,ForceMode.Impulse);
+        if(isThisPlayer) ballInstance.GetComponent<Ball>().isPlayer = true;
+        ballInstance.GetComponent<Ball>().shootPerson = shooter;
     }
-    public void ThrowBall2()
+
+    public void ThrowBall(float strength)
     {
-        GameObject ball2Instance = Instantiate(ball2,transform.position,Quaternion.identity) as GameObject;
-        Rigidbody ball2rb = ball2Instance.GetComponent<Rigidbody>();
-        ball2rb.AddForce(transform.forward*ball2_Speed,ForceMode.Impulse);
-    }
-    public void ActivateCounter()
-    {
-        GameObject counterInstance = Instantiate(Counter,transform.position,Quaternion.identity) as GameObject;
+        GameObject ballInstance = Instantiate(ball,transform.position,Quaternion.identity) as GameObject;
+        Rigidbody ballrb = ballInstance.GetComponent<Rigidbody>();
+        ballrb.AddForce(transform.forward*ballSpeed*strength,ForceMode.Impulse);
     }
 
 }

@@ -19,7 +19,7 @@ public class Warhead : MonoBehaviour
     }
     void OnCollisionEnter(Collision col)
     {
-        if(col.gameObject.tag != "Player")
+        if(!col.gameObject.CompareTag("Player"))
         {
             GameObject warheadInstance = Instantiate(detonation,transform.position,Quaternion.identity) as GameObject;
             Destroy(this.gameObject);

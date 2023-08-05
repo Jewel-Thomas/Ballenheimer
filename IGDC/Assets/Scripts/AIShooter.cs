@@ -15,7 +15,7 @@ public class AIShooter : MonoBehaviour,IThrowBall,Ihealth
     Rigidbody rb;
     [SerializeField] float health = 100;
     [SerializeField] TextMeshProUGUI overText;
-    public AudioClip audioClip;
+    public AudioClip shooterAIAudio;
 
     float randomTime;
     // Start is called before the first frame update

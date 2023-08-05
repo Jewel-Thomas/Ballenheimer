@@ -50,7 +50,7 @@ namespace StarterAssets
 		public float TopClamp = 90.0f;
 		[Tooltip("How far in degrees can you move the camera down")]
 		public float BottomClamp = -90.0f;
-		[SerializeField] Animator playerAnimator;
+
 
 		// cinemachine
 		private float _cinemachineTargetPitch;
@@ -162,11 +162,6 @@ namespace StarterAssets
 
 			// note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
 			// if there is no input, set the target speed to 0
-			if (_input.move == Vector2.zero) 
-			{
-				playerAnimator.SetBool("Run",false);
-				targetSpeed = 0.0f;
-			}
 
 			// a reference to the players current horizontal velocity
 			float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
@@ -180,7 +175,6 @@ namespace StarterAssets
 				// creates curved result rather than a linear one giving a more organic speed change
 				// note T in Lerp is clamped, so we don't need to clamp our speed
 				_speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude, Time.deltaTime * SpeedChangeRate);
-				playerAnimator.SetBool("Run",true);
 
 				// round speed to 3 decimal places
 				_speed = Mathf.Round(_speed * 1000f) / 1000f;
@@ -224,11 +218,6 @@ namespace StarterAssets
 				{
 					// the square root of H * -2 * G = how much velocity needed to reach desired height
 					_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
-					if(!isJumpTriggered)
-					{
-						isJumpTriggered = true;
-						playerAnimator.SetTrigger("Jump");
-					}
 				}
 
 				// jump timeout

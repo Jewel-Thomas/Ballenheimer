@@ -7,6 +7,9 @@ TagManager:
   - CinemachineTarget
   - AI
   - PlayerAI
+  - enemyplat
+  - Energy
+  - catch
   layers:
   - Default
   - TransparentFX
@@ -17,7 +20,7 @@ TagManager:
   - Ground
   - Post Processing
   - AI
-  - 
+  - Bomb
   - 
   - 
   - 
