@@ -3,32 +3,7 @@ guid: d1f431fffb886fb4abb2bee157a741ac
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: flame red
-    second: {fileID: 2100000, guid: 35f612eb3c064f448a092fa3eeae282a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: flame red.002
-    second: {fileID: 2100000, guid: af1dfc5a2d0c6614f9e8223999a9e957, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: flame red.003
-    second: {fileID: 2100000, guid: de0eb87486dd2dd41bf9a73d55aee031, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: flame red.004
-    second: {fileID: 2100000, guid: 28e4785d6b4383143a4cfd06e04dbe67, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: flame red.005
-    second: {fileID: 2100000, guid: 8bf9eac632bcec24e95fc4bdc7560fa3, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -57,7 +32,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1
