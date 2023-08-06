@@ -8,7 +8,17 @@ public class CountDown : MonoBehaviour
 {
     [SerializeField] int countDownTime;
     [SerializeField] TextMeshProUGUI countDownText;
+    [Header("Player Component")]
+    [Space]
     [SerializeField] Player player;
+
+    [Header("Audio")]
+    [Space]
+    [SerializeField] AudioClip tickAudio;
+    [SerializeField] AudioClip airHorn;
+
+    [Header("All Player List")]
+    [Space]
     public List<NavMeshAgent> navMeshAgents;
     public List<AIShooter> aIShooters;
     public List<PlayerAI> playerAIs;
@@ -24,8 +34,10 @@ public class CountDown : MonoBehaviour
         {
             countDownText.text = countDownTime.ToString();
             yield return new WaitForSeconds(1);
+            if(countDownTime > 1) UIManager.audioSource.PlayOneShot(tickAudio);
             countDownTime--;
         }
+        UIManager.audioSource.PlayOneShot(airHorn);
         countDownText.text = "DODGE!";
         StartGame();
         yield return new WaitForSeconds(2);
