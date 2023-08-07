@@ -19,6 +19,6 @@ public class PutOverPosition : MonoBehaviour
 
     void PutUpon()
     {
-        textMap.transform.position = new Vector3(transform.position.x+1,transform.position.y+2.5f,transform.position.z);
+        textMap.transform.position = new Vector3(transform.position.x,transform.position.y+2.5f,transform.position.z);
     }
 }

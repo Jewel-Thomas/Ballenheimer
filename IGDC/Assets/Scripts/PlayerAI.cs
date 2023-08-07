@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 using TMPro;
 
 public class PlayerAI : MonoBehaviour,IThrowBall,Ihealth
@@ -12,12 +13,14 @@ public class PlayerAI : MonoBehaviour,IThrowBall,Ihealth
     [SerializeField] BallSpawner ballSpawner;
     public TextMeshProUGUI warnText;
     [SerializeField] float health;
+    float totalHealth;
     public AudioClip playerAIAudio;
+    public Image healthBar;
 
     // Start is called before the first frame update
     void Start()
     {
-        health = 100;
+        totalHealth = health;
         float randomTime = Random.Range(0.5f,2);
         navMeshAgent = GetComponent<NavMeshAgent>();
         InvokeRepeating(nameof(Throw),randomTime,randomTime);
@@ -35,6 +38,12 @@ public class PlayerAI : MonoBehaviour,IThrowBall,Ihealth
             CancelInvoke();
             gameObject.SetActive(false);
         }
+        UpdateHealthBar();
+    }
+
+    void UpdateHealthBar()
+    {
+        healthBar.fillAmount = health/totalHealth;
     }
 
     void MoveTowardsTarget()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using TMPro;
+using UnityEngine.UI;
 
 public class AIShooter : MonoBehaviour,IThrowBall,Ihealth
 {
@@ -14,14 +15,15 @@ public class AIShooter : MonoBehaviour,IThrowBall,Ihealth
     [SerializeField] GameObject player;
     Rigidbody rb;
     [SerializeField] float health = 100;
-    [SerializeField] TextMeshProUGUI overText;
+    float totalHealth;
+    [SerializeField] Image healthBar;
     public AudioClip shooterAIAudio;
 
     float randomTime;
     // Start is called before the first frame update
     void Start()
     {
-        health = 100;
+        totalHealth = health;
         randomTime = Random.Range(0.5f,2);
         navMeshAgent = GetComponent<NavMeshAgent>();
         InvokeRepeating(nameof(Throw),randomTime,randomTime);
@@ -43,7 +45,7 @@ public class AIShooter : MonoBehaviour,IThrowBall,Ihealth
         try{
             // Transform playerPos = player.transform;
             // navMeshAgent.destination = playerPos.position;
-            overText.text = $"Health : {health}";
+            healthBar.fillAmount = health/totalHealth;
         }
         catch
         {

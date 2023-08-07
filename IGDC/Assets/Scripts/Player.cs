@@ -35,7 +35,6 @@ public class Player : MonoBehaviour,IThrowBall,Ihealth
     [Space]
     [Tooltip("Key Input that calls the Jump Action")]
     public KeyCode jumpKey = KeyCode.Space;
-    public KeyCode bombKey = KeyCode.B;
     public Joystick joystick;
 
     [Header("Ground Check")]
@@ -58,9 +57,6 @@ public class Player : MonoBehaviour,IThrowBall,Ihealth
     [Space]
     public AudioClip playerAudio;
 
-    [Header("Animations")]
-    [Space]
-    public Animator mortarAnim;
     // Start is called before the first frame update
     void Start()
     {
@@ -82,11 +78,6 @@ public class Player : MonoBehaviour,IThrowBall,Ihealth
             if(Input.GetMouseButtonDown(0))
             {
                 Throw();
-            }
-            if(Input.GetKeyDown(bombKey))
-            {
-                Instantiate(bomb,new Vector3(transform.position.x,transform.position.y+5,transform.position.z),Quaternion.identity);
-                mortarAnim.SetTrigger("MortarAnim");
             }
 #endif
             // Getting Player Input Values
