@@ -57,10 +57,7 @@ public class Ball : MonoBehaviour
                 }
             }
         }
-        catch
-        {
-
-        }
+        catch {}
         if(other.gameObject.CompareTag("AI") && isPlayer)
         {
             float health = other.gameObject.GetComponent<AIShooter>().GetHealth();
