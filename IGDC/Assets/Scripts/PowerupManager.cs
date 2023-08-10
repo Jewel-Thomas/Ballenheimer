@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerupManager : MonoBehaviour
+public class PowerUpManager : MonoBehaviour
 {
     public GameObject[] PowerUps;
     public Transform[] SpawnLocations;
@@ -16,14 +16,10 @@ public class PowerupManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(powerspawn=True)
+        if(powerspawn=true)
         {
-            StartCoroutine(PowerCoolDown());
+           // StartCoroutine(PowerCoolDown());
         }
         
     }
-    /*IEnumerator PowerCoolDown()
-    {
-
-    }*/
 }
