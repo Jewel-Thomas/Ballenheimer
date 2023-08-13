@@ -2,13 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using Photon.Pun;
 
 public class UIManager : MonoBehaviour
 {
     [SerializeField] Player player;
     [SerializeField] TextMeshProUGUI fpsText; 
-    [SerializeField] TextMeshProUGUI pingText;
     [SerializeField] TextMeshProUGUI healthText;
     float deltaTime = 0.0f;
     Color tempColor;
@@ -18,8 +16,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject otherUI;
     public static float redHealth;
     public static float blueHealth;
-    [SerializeField] TextMeshProUGUI redHealthText;
-    [SerializeField] TextMeshProUGUI blueHealthText;
+    // [SerializeField] TextMeshProUGUI redHealthText;
+    // [SerializeField] TextMeshProUGUI blueHealthText;
     public static AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
@@ -35,7 +33,6 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         CalculateFPS();
-        CalculatePing();
         ChangeHealthText();
         if(!isPaused && Input.GetKeyDown(KeyCode.Escape))
         {
@@ -57,11 +54,6 @@ public class UIManager : MonoBehaviour
         fpsText.text = string.Format("{0:0.0} ms ({1:0.} fps)", msec, fps);
     }
 
-    void CalculatePing()
-    {
-        pingText.text = "Ping : " + PhotonNetwork.GetPing(); 
-    }
-
     void Pause()
     {
         Time.timeScale = 0;
@@ -81,15 +73,13 @@ public class UIManager : MonoBehaviour
     {
         float currentHealth = player.GetHealth();
         healthText.text = $"Health : {currentHealth}";
-        redHealthText.text = $"Red Health : {redHealth}";
-        blueHealthText.text = $"Blue Health : {blueHealth}"; 
     }
 
     public void ChangeColor()
     {
         float currentHealth = player.GetHealth();
-        tempColor.r = (100-currentHealth)/100;
-        tempColor.g = currentHealth/100;
+        tempColor.r = (100-currentHealth)/100;    // Increases the red color as the health goes down
+        tempColor.g = currentHealth/100;          // Decreases the green color as the health goes down
         healthText.color = tempColor;
     }
 }

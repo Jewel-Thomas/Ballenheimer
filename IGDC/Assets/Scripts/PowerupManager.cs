@@ -16,7 +16,7 @@ public class PowerUpManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(powerspawn=true)
+        if(powerspawn==true)
         {
            // StartCoroutine(PowerCoolDown());
         }

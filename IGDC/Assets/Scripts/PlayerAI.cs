@@ -7,7 +7,6 @@ using TMPro;
 
 public class PlayerAI : MonoBehaviour,IThrowBall,Ihealth
 {
-    [SerializeField] List<GameObject> targetList;
     [SerializeField] GameObject currentTarget;
     NavMeshAgent navMeshAgent;
     [SerializeField] BallSpawner ballSpawner;
@@ -16,10 +15,13 @@ public class PlayerAI : MonoBehaviour,IThrowBall,Ihealth
     float totalHealth;
     public AudioClip playerAIAudio;
     public Image healthBar;
+    public bool wasEmpty = true;
+    public AISpawner aISpawner;
 
     // Start is called before the first frame update
     void Start()
     {
+        aISpawner = FindObjectOfType<AISpawner>();
         totalHealth = health;
         float randomTime = Random.Range(0.5f,2);
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -34,7 +36,6 @@ public class PlayerAI : MonoBehaviour,IThrowBall,Ihealth
         if(health <= 0)
         {
             UIManager.audioSource.PlayOneShot(playerAIAudio);
-            targetList.Remove(this.gameObject);
             CancelInvoke();
             gameObject.SetActive(false);
         }
@@ -49,14 +50,21 @@ public class PlayerAI : MonoBehaviour,IThrowBall,Ihealth
     void MoveTowardsTarget()
     {
         try{
-            if(!currentTarget.activeInHierarchy && targetList!=null)
-            {
-                if(targetList.Count == 1) CancelInvoke();
-                targetList.Remove(currentTarget);
-            }
-            if(targetList.Count==0)
+            if(aISpawner.enemyAI.Count==0)
             {
                 CancelInvoke();
+                wasEmpty = true;
+            }
+            if(aISpawner.enemyAI.Count > 0 && wasEmpty)
+            {
+                float randomTime = Random.Range(0.5f,2);
+                InvokeRepeating(nameof(Throw),randomTime,randomTime);
+                wasEmpty = false;
+            }
+            if(!currentTarget.activeInHierarchy && aISpawner.enemyAI!=null)
+            {
+                // if(targetList.Count == 1) CancelInvoke();
+                aISpawner.enemyAI.Remove(currentTarget);
             }
             navMeshAgent.destination = currentTarget.transform.position;
         }
@@ -68,7 +76,7 @@ public class PlayerAI : MonoBehaviour,IThrowBall,Ihealth
     void FindTarget()
     {
         float min = Mathf.Infinity;
-        foreach (var target in targetList)
+        foreach (var target in aISpawner.enemyAI)
         {
             if(Vector3.Distance(this.transform.position,target.transform.position) < min)
             {

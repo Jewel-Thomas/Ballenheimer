@@ -24,16 +24,7 @@ public class Ball : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        try{
-            // if(other.gameObject.CompareTag("Player") && isPlayer)
-            // {
-            //     other.gameObject.GetComponent<PlayerAI>().warnText.text = $"Shoot the enemy you Drunkart @{shootPerson.name}";
-            //     StartCoroutine(other.gameObject.GetComponent<PlayerAI>().WarnShooter());
-            // }
-        }
-        catch{
-
-        }
+       
         try{
 
             if(other.gameObject.CompareTag("Player") && !isPlayer)
@@ -67,6 +58,13 @@ public class Ball : MonoBehaviour
                 health = other.gameObject.GetComponent<AIShooter>().GetHealth();
                 UIManager.blueHealth-=5;
             }
+        }
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("PMortar") && !isPlayer)
+        {
+            other.GetComponent<MortarController>().mortarCharger.timer-=2;
         }
     }
 

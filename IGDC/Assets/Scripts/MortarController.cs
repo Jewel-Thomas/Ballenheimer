@@ -18,6 +18,7 @@ public class MortarController : MonoBehaviour
     [Header("UI")]
     [Space]
     [SerializeField] Slider rotationSlider;
+    public MortarCharger mortarCharger;
     void Start()
     {
         mortarAnimator = GetComponent<Animator>();
@@ -26,14 +27,14 @@ public class MortarController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(bombKey))
-        {
-            ThrowNuclearBomb();
-        }
+        // if(Input.GetKeyDown(bombKey))
+        // {
+        //     ThrowNuclearBomb();
+        // }
         RotateMortarHead();
     }
 
-    void ThrowNuclearBomb()
+    public void ThrowNuclearBomb()
     {
         GameObject bomb = Instantiate(nuclearCorePrefab,transform.position,Quaternion.identity) as GameObject;
         Rigidbody bombRb = bomb.GetComponent<Rigidbody>();

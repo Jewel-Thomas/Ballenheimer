@@ -18,16 +18,27 @@ public class AIShooter : MonoBehaviour,IThrowBall,Ihealth
     float totalHealth;
     [SerializeField] Image healthBar;
     public AudioClip shooterAIAudio;
+    [SerializeField] AISpawner aISpawner;
+    [SerializeField] Transform mortarTransform;
+    [SerializeField] int targetSetter;
 
     float randomTime;
     // Start is called before the first frame update
     void Start()
     {
+        targetSetter = Random.Range(0,2); // Used to make the AI have 50% chance to target mortar as well as the player AIs
+        aISpawner = FindObjectOfType<AISpawner>();
+        mortarTransform = FindObjectOfType<MortarController>().transform;
         totalHealth = health;
         randomTime = Random.Range(0.5f,2);
         navMeshAgent = GetComponent<NavMeshAgent>();
         InvokeRepeating(nameof(Throw),randomTime,randomTime);
         rb = GetComponent<Rigidbody>();
+        GameObject[] temp = GameObject.FindGameObjectsWithTag("Player");
+        foreach (var item in temp)
+        {
+            targetList.Add(item);
+        }
     }
 
     // Update is called once per frame
@@ -40,7 +51,8 @@ public class AIShooter : MonoBehaviour,IThrowBall,Ihealth
             UIManager.audioSource.PlayOneShot(shooterAIAudio);
             CancelInvoke();
             ScoreManager.Instance.AddScore(5);
-            gameObject.SetActive(false);
+            aISpawner.enemyAI.Remove(this.gameObject);
+            Destroy(this.gameObject);
         }
         try{
             // Transform playerPos = player.transform;
@@ -66,7 +78,8 @@ public class AIShooter : MonoBehaviour,IThrowBall,Ihealth
             {
                 CancelInvoke();
             }
-            navMeshAgent.destination = currentTarget.transform.position;
+            if(targetSetter==0) navMeshAgent.destination = currentTarget.transform.position; // Targets playerAIs when the value is 0
+            else navMeshAgent.destination = mortarTransform.position; // Targets mortar when the value is 1
         }
         catch{
             
