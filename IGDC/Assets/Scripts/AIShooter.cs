@@ -28,7 +28,7 @@ public class AIShooter : MonoBehaviour,IThrowBall,Ihealth
     {
         targetSetter = Random.Range(0,2); // Used to make the AI have 50% chance to target mortar as well as the player AIs
         aISpawner = FindObjectOfType<AISpawner>();
-        mortarTransform = FindObjectOfType<MortarController>().transform;
+        mortarTransform = GameObject.FindGameObjectWithTag("PMortar").transform;
         totalHealth = health;
         randomTime = Random.Range(0.5f,2);
         navMeshAgent = GetComponent<NavMeshAgent>();

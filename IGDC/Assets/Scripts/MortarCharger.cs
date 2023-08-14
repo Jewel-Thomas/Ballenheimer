@@ -6,29 +6,36 @@ using UnityEngine.UI;
 public class MortarCharger : MonoBehaviour
 {
     [SerializeField] float chargeTime;
-    public float timer;
-    [SerializeField] Image chargeAmount;
+    public float playerMortartimer;
+    public float enemyMortartimer;
+    [SerializeField] Image playerChargeAmount;
+    [SerializeField] Image enemyChargeAmount;
     [SerializeField] MortarController mortarController;
     public bool isThrown = false;
     void Start()
     {
-        timer = 0;
-        chargeAmount.fillAmount = 0;
+        playerMortartimer = 0;
+        playerChargeAmount.fillAmount = 0;
     }
     void Update()
     {
         ChargeUp();
-        if(timer>=chargeTime && !isThrown)
+        if(playerMortartimer>=chargeTime && !isThrown)
         {
             mortarController.ThrowNuclearBomb();
             isThrown = true;
         }
     }
 
+
+    // Charges both the mortar with time
     void ChargeUp()
     {
-        timer+=Time.deltaTime;
-        timer = Mathf.Clamp(timer,0,chargeTime);
-        chargeAmount.fillAmount = timer/chargeTime;
+        playerMortartimer+=Time.deltaTime;
+        enemyMortartimer+=Time.deltaTime;
+        playerMortartimer = Mathf.Clamp(playerMortartimer,0,chargeTime);
+        enemyMortartimer = Mathf.Clamp(enemyMortartimer,0,chargeTime);
+        playerChargeAmount.fillAmount = playerMortartimer/chargeTime;
+        enemyChargeAmount.fillAmount = enemyMortartimer/chargeTime;
     }
 }

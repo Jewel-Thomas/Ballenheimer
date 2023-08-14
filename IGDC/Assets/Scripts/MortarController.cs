@@ -27,11 +27,7 @@ public class MortarController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if(Input.GetKeyDown(bombKey))
-        // {
-        //     ThrowNuclearBomb();
-        // }
-        RotateMortarHead();
+        // RotateMortarHead();
     }
 
     public void ThrowNuclearBomb()
@@ -39,7 +35,7 @@ public class MortarController : MonoBehaviour
         GameObject bomb = Instantiate(nuclearCorePrefab,transform.position,Quaternion.identity) as GameObject;
         Rigidbody bombRb = bomb.GetComponent<Rigidbody>();
         bombRb.AddForce(transform.up*speed,ForceMode.Impulse);
-        mortarAnimator.SetTrigger("MortarAnim");
+        if(gameObject.CompareTag("PMortar")) mortarAnimator.SetTrigger("MortarAnim");
     }
 
     void RotateMortarHead()

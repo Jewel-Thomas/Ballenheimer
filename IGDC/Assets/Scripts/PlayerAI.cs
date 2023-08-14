@@ -8,6 +8,7 @@ using TMPro;
 public class PlayerAI : MonoBehaviour,IThrowBall,Ihealth
 {
     [SerializeField] GameObject currentTarget;
+    [SerializeField] int targetSetter;
     NavMeshAgent navMeshAgent;
     [SerializeField] BallSpawner ballSpawner;
     public TextMeshProUGUI warnText;
@@ -17,10 +18,13 @@ public class PlayerAI : MonoBehaviour,IThrowBall,Ihealth
     public Image healthBar;
     public bool wasEmpty = true;
     public AISpawner aISpawner;
+    [SerializeField] Transform mortarTransform;
 
     // Start is called before the first frame update
     void Start()
     {
+        targetSetter = Random.Range(0,2);
+        mortarTransform = GameObject.FindGameObjectWithTag("EMortar").transform;
         aISpawner = FindObjectOfType<AISpawner>();
         totalHealth = health;
         float randomTime = Random.Range(0.5f,2);
@@ -66,7 +70,8 @@ public class PlayerAI : MonoBehaviour,IThrowBall,Ihealth
                 // if(targetList.Count == 1) CancelInvoke();
                 aISpawner.enemyAI.Remove(currentTarget);
             }
-            navMeshAgent.destination = currentTarget.transform.position;
+            if(targetSetter==0) navMeshAgent.destination = currentTarget.transform.position;
+            else navMeshAgent.destination = mortarTransform.position;
         }
         catch{
             

@@ -11,6 +11,7 @@ TagManager:
   - Energy
   - catch
   - PMortar
+  - EMortar
   layers:
   - Default
   - TransparentFX

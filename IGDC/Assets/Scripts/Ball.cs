@@ -64,7 +64,11 @@ public class Ball : MonoBehaviour
     {
         if(other.gameObject.CompareTag("PMortar") && !isPlayer)
         {
-            other.GetComponent<MortarController>().mortarCharger.timer-=2;
+            other.GetComponent<MortarController>().mortarCharger.playerMortartimer-=2;
+        }
+        if(other.gameObject.CompareTag("EMortar") && isPlayer)
+        {
+            other.GetComponent<MortarController>().mortarCharger.enemyMortartimer-=2;
         }
     }
 
