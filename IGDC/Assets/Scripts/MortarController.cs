@@ -15,6 +15,7 @@ public class MortarController : MonoBehaviour
     [Header("Animations")]
     [Space]
     [SerializeField] Animator mortarAnimator;
+    [SerializeField] Animator lightAnim;
     [Header("UI")]
     [Space]
     [SerializeField] Slider rotationSlider;
@@ -42,10 +43,13 @@ public class MortarController : MonoBehaviour
         {
             bombRb.AddForce(transform.up*speed,ForceMode.Impulse);
             mortarAnimator.SetTrigger("MortarAnim");
+            lightAnim.SetTrigger("LightsAnim");
         }
         if(gameObject.CompareTag("EMortar"))
         {
             bombRb.AddForce(transform.forward*speed,ForceMode.Impulse);
+            mortarAnimator.SetTrigger("EnemyShot");
+            lightAnim.SetTrigger("LightsAnim");
         }
     }
 

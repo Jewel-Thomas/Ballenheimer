@@ -2964,7 +2964,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 254147345}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 37cbf7fedf673f9499af55f2186c6226, type: 2}
   m_CullingMode: 0
@@ -3014,6 +3014,7 @@ MonoBehaviour:
   speed: 75
   bombKey: 98
   mortarAnimator: {fileID: 0}
+  lightAnim: {fileID: 6876100279244861149}
   rotationSlider: {fileID: 204449722}
   mortarCharger: {fileID: 6876100279244861150}
 --- !u!1 &268044885
@@ -6081,6 +6082,7 @@ MonoBehaviour:
   speed: 75
   bombKey: 98
   mortarAnimator: {fileID: 0}
+  lightAnim: {fileID: 6876100279244861149}
   rotationSlider: {fileID: 204449722}
   mortarCharger: {fileID: 6876100279244861150}
 --- !u!65 &359742838
@@ -20225,7 +20227,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1961100726
 Transform:
   m_ObjectHideFlags: 0
@@ -25578,12 +25580,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fdee666686065543a88f800c0bc9621, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chargeTime: 60
+  chargeTime: 30
   playerMortartimer: 0
   enemyMortartimer: 0
   playerChargeAmount: {fileID: 2139180880}
   enemyChargeAmount: {fileID: 861016988}
-  mortarController: {fileID: 359742837}
+  playerMortarController: {fileID: 359742837}
+  enemyMortarController: {fileID: 254147349}
   isThrown: 0
 --- !u!1001 &6892843751814915667
 PrefabInstance:

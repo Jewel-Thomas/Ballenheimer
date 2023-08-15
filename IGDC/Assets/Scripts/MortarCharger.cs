@@ -10,7 +10,8 @@ public class MortarCharger : MonoBehaviour
     public float enemyMortartimer;
     [SerializeField] Image playerChargeAmount;
     [SerializeField] Image enemyChargeAmount;
-    [SerializeField] MortarController mortarController;
+    [SerializeField] MortarController playerMortarController;
+    [SerializeField] MortarController enemyMortarController;
     public bool isThrown = false;
     void Start()
     {
@@ -22,7 +23,12 @@ public class MortarCharger : MonoBehaviour
         ChargeUp();
         if(playerMortartimer>=chargeTime && !isThrown)
         {
-            mortarController.ThrowNuclearBomb();
+            playerMortarController.ThrowNuclearBomb();
+            isThrown = true;
+        }
+        if(enemyMortartimer>=chargeTime && !isThrown)
+        {
+            enemyMortarController.ThrowNuclearBomb();
             isThrown = true;
         }
     }
