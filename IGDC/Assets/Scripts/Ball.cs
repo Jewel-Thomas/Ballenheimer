@@ -10,6 +10,8 @@ public class Ball : MonoBehaviour
     Rigidbody ballRb;
     public bool isPlayer = false;
     public GameObject shootPerson;
+    [SerializeField] GameObject PlayerUI;
+    UIManager uimanger;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,8 +40,9 @@ public class Ball : MonoBehaviour
                     uIManager.ChangeColor();
                     if(health<5)
                     {
+                        uIManager.GameOver();
                         UIManager.audioSource.PlayOneShot(other.gameObject.GetComponent<Player>().playerAudio);
-                        parentObject.SetActive(false);
+                        //parentObject.SetActive(false);
                     }
                 }
                 catch{
@@ -71,5 +74,7 @@ public class Ball : MonoBehaviour
             other.GetComponent<MortarController>().mortarCharger.enemyMortartimer-=2;
         }
     }
+
+
 
 }

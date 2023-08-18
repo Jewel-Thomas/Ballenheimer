@@ -12,7 +12,8 @@ public class UIManager : MonoBehaviour
     Color tempColor;
     [SerializeField] AudioSource bgm;
     bool isPaused = false;
-    [SerializeField] GameObject pausedPanel;
+    public bool isover = false;
+    [SerializeField] GameObject pausedPanel, gameoverPan;
     [SerializeField] GameObject otherUI;
     public static float redHealth;
     public static float blueHealth;
@@ -34,16 +35,18 @@ public class UIManager : MonoBehaviour
     {
         CalculateFPS();
         ChangeHealthText();
-        if(!isPaused && Input.GetKeyDown(KeyCode.Escape))
+        if(!isPaused && Input.GetKeyDown(KeyCode.Escape) && !isover)
         {
             Pause();
             isPaused = !isPaused;
         }
-        else if(isPaused && Input.GetKeyDown(KeyCode.Escape))
+        else if(isPaused && Input.GetKeyDown(KeyCode.Escape) && !isover)
         {
             Resume();
             isPaused = !isPaused;
         }
+        //Time.timeScale += (1f/4f)*Time.unscaledDeltaTime;
+        //Time.timeScale = Mathf.Clamp(Time.timeScale,0f,1f);
     }
 
     void CalculateFPS()
@@ -81,5 +84,32 @@ public class UIManager : MonoBehaviour
         tempColor.r = (100-currentHealth)/100;    // Increases the red color as the health goes down
         tempColor.g = currentHealth/100;          // Decreases the green color as the health goes down
         healthText.color = tempColor;
+    }
+
+    public void GameOver()
+    {
+        //UIManager.audioSource.PlayOneShot(other.gameObject.GetComponent<Player>().playerAudio);
+        //parentObject.SetActive(false);
+        otherUI.SetActive(false);
+        Destroy(pausedPanel);
+        isover = true;
+        StartCoroutine(ScaleTime(1.0f, 0.0f, 3.0f));
+    }
+    IEnumerator ScaleTime(float start, float end, float time) 
+    {
+	    float lastTime = Time.realtimeSinceStartup;
+	    float timer = 0.0f;
+        //Time.fixedDeltaTime = Time.timeScale * 0.02f;
+	    while (timer < time) 
+        {
+		    Time.timeScale = Mathf.Lerp (start, end, timer / time);
+		    timer += (Time.realtimeSinceStartup - lastTime);
+		    lastTime = Time.realtimeSinceStartup;
+            Time.fixedDeltaTime = Time.timeScale;
+		    yield return null;
+	    }
+	
+	    Time.timeScale = end;
+        gameoverPan.SetActive(true);	
     }
 }
