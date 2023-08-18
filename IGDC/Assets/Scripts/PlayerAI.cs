@@ -70,6 +70,7 @@ public class PlayerAI : MonoBehaviour,IThrowBall,Ihealth
                 // if(targetList.Count == 1) CancelInvoke();
                 aISpawner.enemyAI.Remove(currentTarget);
             }
+            navMeshAgent.speed = 10;
             if(targetSetter==0) navMeshAgent.destination = currentTarget.transform.position;
             else navMeshAgent.destination = mortarTransform.position;
         }

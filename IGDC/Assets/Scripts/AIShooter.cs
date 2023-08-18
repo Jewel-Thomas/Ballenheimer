@@ -78,6 +78,7 @@ public class AIShooter : MonoBehaviour,IThrowBall,Ihealth
             {
                 CancelInvoke();
             }
+            navMeshAgent.speed = 10;
             if(targetSetter==0) navMeshAgent.destination = currentTarget.transform.position; // Targets playerAIs when the value is 0
             else navMeshAgent.destination = mortarTransform.position; // Targets mortar when the value is 1
         }
