@@ -10,7 +10,7 @@ public class SpawnPlayers : MonoBehaviour
     public float maxX;
     public float minZ;
     public float maxZ;
-    private float yPos = 1.803f;
+    public float yPos = 1.803f;
     // Start is called before the first frame update
     void Start()
     {
