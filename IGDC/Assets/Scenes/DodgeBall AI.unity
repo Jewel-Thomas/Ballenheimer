@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 0.1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: eac2ef371405749e0bd050b4c3272f16, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 8401881fcb9afd34eb383fc90bbbbddc, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -37401,6 +37401,7 @@ GameObject:
   - component: {fileID: 1385540892}
   - component: {fileID: 1385540894}
   - component: {fileID: 1385540895}
+  - component: {fileID: 1385540896}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -37529,6 +37530,19 @@ MonoBehaviour:
   maxX: 17.8
   yPos: 1.88
   spawmtime: 5
+--- !u!114 &1385540896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385540891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 085a7426a85d4614a9a507944891e088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skyRotationSpeed: 1.5
 --- !u!1 &1389056978
 GameObject:
   m_ObjectHideFlags: 0
@@ -53137,7 +53151,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1961100726
 Transform:
   m_ObjectHideFlags: 0
@@ -58324,7 +58338,7 @@ Transform:
   m_GameObject: {fileID: 8530518042642966193}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.4, y: 0, z: -3.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
