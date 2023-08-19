@@ -151,11 +151,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 10
-  maxRadius: 20
-  speed: 15
-  startWidth: 5
+  maxRadius: 1000
+  speed: 25
+  startWidth: 10
   force: 250
-  destroyIn: 1
+  destroyIn: 5
 --- !u!1 &1237844011920491561
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,8 +446,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 300
-      minScalar: 200
+      scalar: 1500
+      minScalar: 1000
       maxCurve:
         serializedVersion: 2
         m_Curve:

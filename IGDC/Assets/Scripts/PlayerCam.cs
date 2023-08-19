@@ -27,21 +27,20 @@ public class PlayerCam : MonoBehaviour
 
         float mouseX = Input.GetAxisRaw("Mouse X")*sensitivity*Time.deltaTime;
         float mouseY = Input.GetAxisRaw("Mouse Y")*sensitivity*Time.deltaTime;
-#if UNITY_EDITOR
         yRot+=mouseX;
         xRot-=mouseY;
         xRot = Mathf.Clamp(xRot,-60,60);
         transform.rotation = Quaternion.Euler(xRot,yRot,0);
         orientation.rotation = Quaternion.Euler(0,yRot,0);
-#else
-        if(Input.mousePosition.x > Screen.width/2)
-        {
-            yRot+=mouseX;
-            xRot-=mouseY;
-            xRot = Mathf.Clamp(xRot,-60,60);
-        }      
-        transform.rotation = Quaternion.Euler(xRot,yRot,0);
-        orientation.rotation = Quaternion.Euler(0,yRot,0);
-#endif
+// #else
+//         if(Input.mousePosition.x > Screen.width/2)
+//         {
+//             yRot+=mouseX;
+//             xRot-=mouseY;
+//             xRot = Mathf.Clamp(xRot,-60,60);
+//         }      
+//         transform.rotation = Quaternion.Euler(xRot,yRot,0);
+//         orientation.rotation = Quaternion.Euler(0,yRot,0);
+// #endif
     }
 }

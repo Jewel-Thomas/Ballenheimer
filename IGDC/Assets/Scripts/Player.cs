@@ -62,7 +62,7 @@ public class Player : MonoBehaviour,IThrowBall,Ihealth
     {
         health = 100;
         Application.targetFrameRate = 60;
-        QualitySettings.vSyncCount = 1;
+        QualitySettings.vSyncCount = 0;
         QualitySettings.pixelLightCount = 6;
         characterController = GetComponent<CharacterController>();
         rb = GetComponent<Rigidbody>();
@@ -74,12 +74,12 @@ public class Player : MonoBehaviour,IThrowBall,Ihealth
     {
         // Player specific throw abstract 
        
-#if UNITY_EDITOR
+
             if(Input.GetMouseButtonDown(0))
             {
                 Throw();
             }
-#endif
+
             // Getting Player Input Values
             PlayerInput();
             // Checks if the player is grounded using Raycast and changes the drag according to the isGrounded bool
@@ -97,13 +97,13 @@ public class Player : MonoBehaviour,IThrowBall,Ihealth
     }
     void PlayerInput()
     {
-#if UNITY_EDITOR
+
         verticalInput = Input.GetAxisRaw("Vertical");
         horizontalInput = Input.GetAxisRaw("Horizontal");
-#else
-        verticalInput = joystick.Vertical;
-        horizontalInput = joystick.Horizontal;
-#endif
+// #else
+//         verticalInput = joystick.Vertical;
+//         horizontalInput = joystick.Horizontal;
+
         // Checks for the possibility and Input for jump
         if(Input.GetKey(jumpKey) && isGrounded && isReadyToJump)
         {
@@ -164,7 +164,7 @@ public class Player : MonoBehaviour,IThrowBall,Ihealth
     }
     public void Throw()
     {
-        ballSpawner.ThrowBall(1,true,this.gameObject);
+        ballSpawner.ThrowBall(2.5f,true,this.gameObject);
     }
 
 }
