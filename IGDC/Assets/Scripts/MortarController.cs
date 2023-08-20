@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,6 +20,8 @@ public class MortarController : MonoBehaviour
     [Header("UI")]
     [Space]
     [SerializeField] Slider rotationSlider;
+    [SerializeField] GameObject flash;
+    [SerializeField] GameObject smoke;
     public MortarCharger mortarCharger;
     void Start()
     {
@@ -43,6 +46,9 @@ public class MortarController : MonoBehaviour
         {
             bombRb.AddForce(transform.forward*speed*2f,ForceMode.Impulse);
             mortarAnimator.SetTrigger("PlayerShot");
+            flash.SetActive(true);
+            StartCoroutine(Onlyflash());
+            smoke.SetActive(true);
         }
         if(gameObject.CompareTag("EMortar"))
         {
@@ -55,5 +61,11 @@ public class MortarController : MonoBehaviour
     {
         float rotateAmount = rotationSlider.value*30;
         transform.rotation = Quaternion.Euler(rotateAmount,transform.rotation.y,transform.rotation.z);
+    }
+
+    private IEnumerator Onlyflash()
+    {
+        yield return new WaitForSeconds(0.75f);
+        flash.SetActive(false);
     }
 }
