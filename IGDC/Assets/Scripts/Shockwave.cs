@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Shockwave : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class Shockwave : MonoBehaviour
 
     private Animator nukeAnim;
     private Animator panelAnim;
+    private TextMeshProUGUI winnerText_;
     
     
     private LineRenderer linerender;
@@ -29,6 +31,7 @@ public class Shockwave : MonoBehaviour
     void Start()
     {
         panelAnim = FindObjectOfType<UIManager>().gameObject.GetComponent<Animator>();
+        winnerText_ = FindObjectOfType<MortarCharger>().gameObject.GetComponent<MortarCharger>().winnerText;
         StartCoroutine(Blast());
         StartCoroutine(LitUp());
         exploded = true;
@@ -52,6 +55,8 @@ public class Shockwave : MonoBehaviour
         nukeAnim.SetTrigger("LightStart");
         yield return new WaitForSeconds(4);
         panelAnim.SetTrigger("LightsAnim");
+        yield return new WaitForSeconds(1);
+        winnerText_.text = (MortarCharger.isRedWinner) ? "Red Team Victory" : "Blue Team Victory"; 
     }
     
     private void Damage(float currentRadius) //responsible for the force exerted on objects

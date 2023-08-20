@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameOverPanel : MonoBehaviour
 {
     string SceneName= "DodgeBall AI";
+    public GameObject gameManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,7 @@ public class GameOverPanel : MonoBehaviour
     }
     public void PlayAgain()
     {
+        Destroy(gameManager);
         SceneManager.LoadScene(SceneName);
         Time.timeScale = 1;
     }

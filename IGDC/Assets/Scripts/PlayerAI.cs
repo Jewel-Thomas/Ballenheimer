@@ -20,10 +20,13 @@ public class PlayerAI : MonoBehaviour,IThrowBall,Ihealth
     public AISpawner aISpawner;
     [SerializeField] Transform mortarTransform;
     [SerializeField] Vector3 startPos;
+    [SerializeField] Animator characterAnim;
+    private bool isDead;
 
     // Start is called before the first frame update
     void Start()
     {
+        isDead = false;
         startPos = transform.localPosition;
         targetSetter = Random.Range(0,2);
         mortarTransform = GameObject.FindGameObjectWithTag("EMortar").transform;
@@ -39,16 +42,26 @@ public class PlayerAI : MonoBehaviour,IThrowBall,Ihealth
     {
         MoveTowardsTarget();
         FindTarget();
-        if(health <= 0)
+        if(health <= 0 && !isDead)
         {
+            isDead = true;
             UIManager.audioSource.PlayOneShot(playerAIAudio);
             navMeshAgent.enabled = false;
-            transform.localPosition = startPos;
-            navMeshAgent.enabled = true;
-            health = totalHealth;
-            targetSetter = Random.Range(0,2);
+            characterAnim.SetTrigger("Dead");
+            StartCoroutine(Respawn());
         }
         UpdateHealthBar();
+    }
+
+    private IEnumerator Respawn()
+    {
+        yield return new WaitForSeconds(5);
+        transform.localPosition = startPos;
+        characterAnim.SetTrigger("Run");
+        navMeshAgent.enabled = true;
+        health = totalHealth;
+        isDead = false;
+        targetSetter = Random.Range(0,2);
     }
 
     void UpdateHealthBar()
@@ -76,8 +89,11 @@ public class PlayerAI : MonoBehaviour,IThrowBall,Ihealth
                 aISpawner.enemyAI.Remove(currentTarget);
             }
             navMeshAgent.speed = 10;
-            if(targetSetter==0) navMeshAgent.destination = currentTarget.transform.position;
-            else navMeshAgent.destination = mortarTransform.position;
+            if(navMeshAgent.enabled)
+            {
+                if(targetSetter==0) navMeshAgent.destination = currentTarget.transform.position;
+                else navMeshAgent.destination = mortarTransform.position;
+            }
         }
         catch{
             

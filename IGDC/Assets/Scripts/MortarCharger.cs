@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class MortarCharger : MonoBehaviour
 {
@@ -12,9 +13,12 @@ public class MortarCharger : MonoBehaviour
     [SerializeField] Image enemyChargeAmount;
     [SerializeField] MortarController playerMortarController;
     [SerializeField] MortarController enemyMortarController;
+    public TextMeshProUGUI winnerText;
     public bool isThrown = false;
+    public static bool isRedWinner = true;
     void Start()
     {
+        isRedWinner = true;
         playerMortartimer = 0;
         playerChargeAmount.fillAmount = 0;
     }
@@ -23,11 +27,13 @@ public class MortarCharger : MonoBehaviour
         ChargeUp();
         if(playerMortartimer>=chargeTime && !isThrown)
         {
+            isRedWinner = true;
             playerMortarController.ThrowNuclearBomb();
             isThrown = true;
         }
         if(enemyMortartimer>=chargeTime && !isThrown)
         {
+            isRedWinner = false;
             enemyMortarController.ThrowNuclearBomb();
             isThrown = true;
         }

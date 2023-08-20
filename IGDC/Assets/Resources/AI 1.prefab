@@ -156,6 +156,10 @@ MonoBehaviour:
   health: 100
   healthBar: {fileID: 5560090412988535026}
   shooterAIAudio: {fileID: 8300000, guid: 35cc749e8492dc648bc8791230fa6144, type: 3}
+  aISpawner: {fileID: 0}
+  mortarTransform: {fileID: 0}
+  targetSetter: 0
+  characterAnim: {fileID: 5829141896370630933}
 --- !u!54 &9177693318399844128
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -798,3 +802,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textMap: {fileID: 7302336526449567562}
+--- !u!95 &5829141896370630933 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: c1197ec53ff9e8c45ab44955ca168f7f, type: 3}
+  m_PrefabInstance: {fileID: 112537224146586756}
+  m_PrefabAsset: {fileID: 0}

@@ -21,6 +21,8 @@ public class AIShooter : MonoBehaviour,IThrowBall,Ihealth
     [SerializeField] AISpawner aISpawner;
     [SerializeField] Transform mortarTransform;
     [SerializeField] int targetSetter;
+    [SerializeField] Animator characterAnim;
+    bool isDead = false;
 
     float randomTime;
     // Start is called before the first frame update
@@ -28,6 +30,7 @@ public class AIShooter : MonoBehaviour,IThrowBall,Ihealth
     {
         targetSetter = Random.Range(0,2); // Used to make the AI have 50% chance to target mortar as well as the player AIs
         aISpawner = FindObjectOfType<AISpawner>();
+        isDead = false;
         mortarTransform = GameObject.FindGameObjectWithTag("PMortar").transform;
         totalHealth = health;
         randomTime = Random.Range(0.5f,2);
@@ -46,13 +49,16 @@ public class AIShooter : MonoBehaviour,IThrowBall,Ihealth
     {
         MoveTowardsTarget();
         FindTarget();
-        if(health <= 0)
+        if(health <= 0 && !isDead)
         {
+            isDead = true;
             UIManager.audioSource.PlayOneShot(shooterAIAudio);
             CancelInvoke();
             ScoreManager.Instance.AddScore(5);
             aISpawner.enemyAI.Remove(this.gameObject);
-            Destroy(this.gameObject);
+            navMeshAgent.enabled = false;
+            characterAnim.SetTrigger("Dead");
+            Destroy(this.gameObject,5);
         }
         try{
             // Transform playerPos = player.transform;
@@ -79,8 +85,10 @@ public class AIShooter : MonoBehaviour,IThrowBall,Ihealth
                 CancelInvoke();
             }
             navMeshAgent.speed = 10;
-            if(targetSetter==0) navMeshAgent.destination = currentTarget.transform.position; // Targets playerAIs when the value is 0
-            else navMeshAgent.destination = mortarTransform.position; // Targets mortar when the value is 1
+            if(navMeshAgent.enabled){
+                if(targetSetter==0) navMeshAgent.destination = currentTarget.transform.position; // Targets playerAIs when the value is 0
+                else navMeshAgent.destination = mortarTransform.position; // Targets mortar when the value is 1
+            }
         }
         catch{
             
