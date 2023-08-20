@@ -20,6 +20,7 @@ public class GameOverPanel : MonoBehaviour
     public void PlayAgain()
     {
         SceneManager.LoadScene(SceneName);
+        Time.timeScale = 1;
     }
     public void QuitGame()
     {

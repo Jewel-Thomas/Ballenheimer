@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Destroyer : MonoBehaviour
 {
-    public SpawnPlayers spawnPlayers;
+    [SerializeField] GameObject player;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,17 +19,11 @@ public class Destroyer : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        // if(other.CompareTag("Player"))
-        // {
-        //     spawnPlayers.RandomPosition();
-        // }
-        // else if(other.CompareTag("AI"))
-        // {
-        //     spawnPlayers.RandomPosition();
-        // }
-        // else
-        // {
-        //     Destroy(other.gameObject);
-        // }
+        if(other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Working!");
+            Vector3 spawnLocation = new Vector3(1.4f,-1.28f,-3.38f);
+            player.transform.localPosition = spawnLocation;
+        }
     }
 }

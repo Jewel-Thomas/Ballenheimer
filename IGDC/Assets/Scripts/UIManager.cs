@@ -91,8 +91,11 @@ public class UIManager : MonoBehaviour
         //UIManager.audioSource.PlayOneShot(other.gameObject.GetComponent<Player>().playerAudio);
         //parentObject.SetActive(false);
         otherUI.SetActive(false);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         Destroy(pausedPanel);
         isover = true;
+        player.enabled = false;
         StartCoroutine(ScaleTime(1.0f, 0.0f, 3.0f));
     }
     IEnumerator ScaleTime(float start, float end, float time) 
