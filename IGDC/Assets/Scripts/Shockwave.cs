@@ -11,18 +11,27 @@ public class Shockwave : MonoBehaviour
     public float startWidth;
     public float force;
     public float destroyIn = 1f;
+    public static bool exploded;
+
+    private Animator nukeAnim;
+    private Animator panelAnim;
     
     
     private LineRenderer linerender;
 
     private void Awake()
     {
+        exploded = false;
+        nukeAnim = GetComponent<Animator>();
         linerender = GetComponent<LineRenderer>(); //sets the number of points for line renderer to make a circle
         linerender.positionCount = points + 1;
     }
     void Start()
     {
+        panelAnim = FindObjectOfType<UIManager>().gameObject.GetComponent<Animator>();
         StartCoroutine(Blast());
+        StartCoroutine(LitUp());
+        exploded = true;
         Destroy(this.gameObject,destroyIn);
     }
     private IEnumerator Blast() //responsible for blast effect
@@ -36,6 +45,13 @@ public class Shockwave : MonoBehaviour
             Damage(currentRadius);
             yield return null;
         }
+    }
+    private IEnumerator LitUp()
+    {
+        yield return new WaitForSeconds(2);
+        nukeAnim.SetTrigger("LightStart");
+        yield return new WaitForSeconds(4);
+        panelAnim.SetTrigger("LightsAnim");
     }
     
     private void Damage(float currentRadius) //responsible for the force exerted on objects

@@ -21,7 +21,7 @@ public class Warhead : MonoBehaviour
     {
         if(!col.gameObject.CompareTag("Player"))
         {
-            GameObject warheadInstance = Instantiate(detonation,transform.position,Quaternion.identity) as GameObject;
+            GameObject warheadInstance = Instantiate(detonation,transform.position,Quaternion.Euler(90,0,0)) as GameObject;
             Destroy(this.gameObject);
         }
 

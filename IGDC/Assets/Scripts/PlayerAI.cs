@@ -19,10 +19,12 @@ public class PlayerAI : MonoBehaviour,IThrowBall,Ihealth
     public bool wasEmpty = true;
     public AISpawner aISpawner;
     [SerializeField] Transform mortarTransform;
+    [SerializeField] Vector3 startPos;
 
     // Start is called before the first frame update
     void Start()
     {
+        startPos = transform.localPosition;
         targetSetter = Random.Range(0,2);
         mortarTransform = GameObject.FindGameObjectWithTag("EMortar").transform;
         aISpawner = FindObjectOfType<AISpawner>();
@@ -40,8 +42,11 @@ public class PlayerAI : MonoBehaviour,IThrowBall,Ihealth
         if(health <= 0)
         {
             UIManager.audioSource.PlayOneShot(playerAIAudio);
-            CancelInvoke();
-            gameObject.SetActive(false);
+            navMeshAgent.enabled = false;
+            transform.localPosition = startPos;
+            navMeshAgent.enabled = true;
+            health = totalHealth;
+            targetSetter = Random.Range(0,2);
         }
         UpdateHealthBar();
     }

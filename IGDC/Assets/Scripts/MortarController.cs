@@ -41,15 +41,13 @@ public class MortarController : MonoBehaviour
         Rigidbody bombRb = bomb.GetComponent<Rigidbody>();
         if(gameObject.CompareTag("PMortar"))
         {
-            bombRb.AddForce(transform.up*speed*2f,ForceMode.Impulse);
-            mortarAnimator.SetTrigger("MortarAnim");
-            // lightAnim.SetTrigger("LightsAnim");
+            bombRb.AddForce(transform.forward*speed*2f,ForceMode.Impulse);
+            mortarAnimator.SetTrigger("PlayerShot");
         }
         if(gameObject.CompareTag("EMortar"))
         {
             bombRb.AddForce(transform.forward*speed*2f,ForceMode.Impulse);
             mortarAnimator.SetTrigger("EnemyShot");
-            // lightAnim.SetTrigger("LightsAnim");
         }
     }
 
