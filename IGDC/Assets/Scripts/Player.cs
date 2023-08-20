@@ -61,7 +61,7 @@ public class Player : MonoBehaviour,IThrowBall,Ihealth
     void Start()
     {
         health = 100;
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = 90;
         QualitySettings.vSyncCount = 0;
         QualitySettings.pixelLightCount = 6;
         characterController = GetComponent<CharacterController>();
