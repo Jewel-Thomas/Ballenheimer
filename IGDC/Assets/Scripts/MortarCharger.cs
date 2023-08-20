@@ -16,8 +16,12 @@ public class MortarCharger : MonoBehaviour
     public TextMeshProUGUI winnerText;
     public bool isThrown = false;
     public static bool isRedWinner = true;
+    public static bool isExploded;
+    public AudioSource audioSource;
+    public AudioClip fireAudio;
     void Start()
     {
+        isExploded = false;
         isRedWinner = true;
         playerMortartimer = 0;
         playerChargeAmount.fillAmount = 0;
@@ -27,13 +31,17 @@ public class MortarCharger : MonoBehaviour
         ChargeUp();
         if(playerMortartimer>=chargeTime && !isThrown)
         {
+            isExploded = true;
             isRedWinner = true;
+            audioSource.PlayOneShot(fireAudio);
             playerMortarController.ThrowNuclearBomb();
             isThrown = true;
         }
         if(enemyMortartimer>=chargeTime && !isThrown)
         {
+            isExploded = true;
             isRedWinner = false;
+            audioSource.PlayOneShot(fireAudio);
             enemyMortarController.ThrowNuclearBomb();
             isThrown = true;
         }

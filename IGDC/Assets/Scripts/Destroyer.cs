@@ -23,7 +23,11 @@ public class Destroyer : MonoBehaviour
         {
             Debug.Log("Working!");
             Vector3 spawnLocation = new Vector3(1.4f,-1.28f,-3.38f);
-            player.transform.localPosition = spawnLocation;
+            if(other.gameObject.name == "Player Object")
+            {
+                player.transform.localPosition = spawnLocation;
+            }
+            else  other.transform.localPosition = spawnLocation;
         }
     }
 }

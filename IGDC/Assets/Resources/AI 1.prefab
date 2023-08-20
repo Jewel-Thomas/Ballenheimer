@@ -155,7 +155,7 @@ MonoBehaviour:
   player: {fileID: 0}
   health: 100
   healthBar: {fileID: 5560090412988535026}
-  shooterAIAudio: {fileID: 8300000, guid: 35cc749e8492dc648bc8791230fa6144, type: 3}
+  shooterAIAudio: {fileID: 8300000, guid: 9a83996f183566a4d9fa460872dc7cd5, type: 3}
   aISpawner: {fileID: 0}
   mortarTransform: {fileID: 0}
   targetSetter: 0

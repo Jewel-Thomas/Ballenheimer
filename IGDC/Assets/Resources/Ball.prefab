@@ -218,6 +218,7 @@ MonoBehaviour:
   destroyAfter: 3
   isPlayer: 0
   shootPerson: {fileID: 0}
+  PlayerUI: {fileID: 0}
 --- !u!54 &4978049248436963988
 Rigidbody:
   m_ObjectHideFlags: 0

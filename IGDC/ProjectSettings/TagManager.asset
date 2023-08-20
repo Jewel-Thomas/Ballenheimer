@@ -12,6 +12,7 @@ TagManager:
   - catch
   - PMortar
   - EMortar
+  - Ball
   layers:
   - Default
   - TransparentFX

@@ -36,6 +36,7 @@ public class Ball : MonoBehaviour
                     GameObject parentObject = other.gameObject.GetComponent<Player>().parent;
                     other.gameObject.GetComponent<Player>().TakeDamage(5);
                     UIManager.redHealth-=5;
+                    UIManager.audioSource.PlayOneShot(other.gameObject.GetComponent<Player>().playerHitAudio);
                     UIManager uIManager = other.gameObject.GetComponent<Player>().canvas.GetComponent<UIManager>(); 
                     uIManager.ChangeColor();
                     if(health<5)
