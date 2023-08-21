@@ -12667,7 +12667,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &380788155
 Transform:
   m_ObjectHideFlags: 0
@@ -31935,7 +31935,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!199 &629531534
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -86636,7 +86636,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chargeTime: 60
   playerMortartimer: 0
-  enemyMortartimer: 20
+  enemyMortartimer: 0
   playerChargeAmount: {fileID: 2139180880}
   enemyChargeAmount: {fileID: 861016988}
   playerMortarController: {fileID: 318250194}
