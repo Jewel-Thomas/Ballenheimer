@@ -96,7 +96,7 @@ public class UIManager : MonoBehaviour
     {
         //UIManager.audioSource.PlayOneShot(other.gameObject.GetComponent<Player>().playerAudio);
         //parentObject.SetActive(false);
-        Cursor.visible = false;
+        Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         otherUI.SetActive(false);
         Destroy(pausedPanel);

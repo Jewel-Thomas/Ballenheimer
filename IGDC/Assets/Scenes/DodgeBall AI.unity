@@ -39514,6 +39514,17 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 3915365081812517687, guid: 3cf2fb68b880ad545af4c60910fdaa15, type: 3}
+--- !u!114 &726349114 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1388778615568475836, guid: 4417311a90c5dee4db778c82b49c2d01, type: 3}
+  m_PrefabInstance: {fileID: 5330697636516637892}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &726935608 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3cf2fb68b880ad545af4c60910fdaa15, type: 3}
@@ -57473,6 +57484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 7822505547517956673}
+  gameoverScore: {fileID: 726349114}
   score: 0
 --- !u!4 &1385540893
 Transform:
@@ -84669,6 +84681,10 @@ PrefabInstance:
     - target: {fileID: 1074813629885120295, guid: 4417311a90c5dee4db778c82b49c2d01, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388778615568475836, guid: 4417311a90c5dee4db778c82b49c2d01, type: 3}
+      propertyPath: m_text
+      value: 'Score : 0'
       objectReference: {fileID: 0}
     - target: {fileID: 2324739766854594541, guid: 4417311a90c5dee4db778c82b49c2d01, type: 3}
       propertyPath: gameManager

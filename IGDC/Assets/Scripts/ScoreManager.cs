@@ -5,7 +5,7 @@ using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI scoreText, gameoverScore;
     [SerializeField] private float score;
     public static ScoreManager Instance;
     // A Singelton Instance created if the instance is not present and is destroyed if present
@@ -24,6 +24,7 @@ public class ScoreManager : MonoBehaviour
     {
         score+=amount;
         scoreText.text = $"Score : {score}";
+        gameoverScore.text = $"Score: {score}";
     }
 
 }
