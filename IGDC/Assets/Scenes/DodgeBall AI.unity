@@ -42577,14 +42577,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.23921569, b: 0, a: 1}
+  m_Color: {r: 0.9056604, g: 0.9056604, b: 0.9056604, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8c69dea73701eea439a3a07e2c5aee2b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ea5d1ba777e2a3f48b0ffbb8f273a6f6, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -56536,7 +56536,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8c69dea73701eea439a3a07e2c5aee2b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8d4a502b6b0a4a94d811e5908eb6f71d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -57533,10 +57533,12 @@ MonoBehaviour:
   - {fileID: 564962914}
   - {fileID: 687464409}
   - {fileID: 1739229527}
+  - {fileID: 1393064556}
   aIShooters:
   - {fileID: 1565171668}
   - {fileID: 2006563807}
   - {fileID: 895596428}
+  - {fileID: 1393064554}
   - {fileID: 521574830}
   - {fileID: 1039358513}
   - {fileID: 1015869333}
@@ -57769,6 +57771,22 @@ PrefabInstance:
 --- !u!4 &1393064553 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6889312936007128640, guid: 416f7325346bcb8478db909536a5db4f, type: 3}
+  m_PrefabInstance: {fileID: 1393064552}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1393064554 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 457294459668343670, guid: 416f7325346bcb8478db909536a5db4f, type: 3}
+  m_PrefabInstance: {fileID: 1393064552}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96c5c55f535a82849bc41c1cb8fe6027, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!195 &1393064556 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 786814195321441240, guid: 416f7325346bcb8478db909536a5db4f, type: 3}
   m_PrefabInstance: {fileID: 1393064552}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1393776093
@@ -69038,7 +69056,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8c69dea73701eea439a3a07e2c5aee2b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d17cc5bf193f6d7428954756f405c94f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -77037,14 +77055,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.24020341, b: 0, a: 1}
+  m_Color: {r: 0.90588236, g: 0.90588236, b: 0.90588236, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8c69dea73701eea439a3a07e2c5aee2b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1158bb4eca730cf4680a3ac4bae27463, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -78855,7 +78873,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!33 &1314123940327629963
 MeshFilter:
   m_ObjectHideFlags: 0

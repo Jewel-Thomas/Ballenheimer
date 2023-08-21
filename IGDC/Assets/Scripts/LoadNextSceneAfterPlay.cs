@@ -19,6 +19,6 @@ public class LoadNextSceneAfterPlay : MonoBehaviour
 
     void ChangeScene()
     {
-        SceneManager.LoadSceneAsync(1);
+        SceneManager.LoadSceneAsync(5);
     }
 }
