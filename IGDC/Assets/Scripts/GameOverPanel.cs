@@ -20,6 +20,7 @@ public class GameOverPanel : MonoBehaviour
     }
     public void PlayAgain()
     {
+        Shockwave.arebuttonsactive = false;
         Destroy(gameManager);
         SceneManager.LoadScene(SceneName);
         Time.timeScale = 1;

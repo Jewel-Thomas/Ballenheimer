@@ -14,6 +14,8 @@ public class Shockwave : MonoBehaviour
     public float destroyIn = 1f;
     public static bool exploded;
 
+    public static bool arebuttonsactive;
+
     private Animator nukeAnim;
     private Animator panelAnim;
     private TextMeshProUGUI winnerText_;
@@ -32,6 +34,7 @@ public class Shockwave : MonoBehaviour
     {
         panelAnim = FindObjectOfType<UIManager>().gameObject.GetComponent<Animator>();
         winnerText_ = FindObjectOfType<MortarCharger>().gameObject.GetComponent<MortarCharger>().winnerText;
+        arebuttonsactive = false;
         StartCoroutine(Blast());
         StartCoroutine(LitUp());
         exploded = true;
@@ -53,10 +56,14 @@ public class Shockwave : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         nukeAnim.SetTrigger("LightStart");
-        yield return new WaitForSeconds(4);
-        panelAnim.SetTrigger("LightsAnim");
         yield return new WaitForSeconds(1);
-        winnerText_.text = (MortarCharger.isRedWinner) ? "Red Team Victory" : "Blue Team Victory"; 
+        panelAnim.SetTrigger("LightsAnim");
+        yield return new WaitForSeconds(3);
+        winnerText_.text = (MortarCharger.isRedWinner) ? "<color=red>RED Team </color>Wins" : "<color=blue>BLUE Team </color>Wins"; 
+        yield return new WaitForSeconds(1);
+        arebuttonsactive = true;
+
+
     }
     
     private void Damage(float currentRadius) //responsible for the force exerted on objects
