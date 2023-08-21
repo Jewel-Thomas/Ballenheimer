@@ -15,11 +15,13 @@ public class UIManager : MonoBehaviour
     public bool isover = false;
     [SerializeField] GameObject pausedPanel, gameoverPan;
     [SerializeField] GameObject otherUI;
+    [SerializeField] CapsuleCollider capsuleCollider;
     public static float redHealth;
     public static float blueHealth;
     // [SerializeField] TextMeshProUGUI redHealthText;
     // [SerializeField] TextMeshProUGUI blueHealthText;
     public static AudioSource audioSource;
+    [SerializeField] ScoreManager scoreManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -102,9 +104,12 @@ public class UIManager : MonoBehaviour
         Destroy(pausedPanel);
         isover = true;
         player.enabled = false;
-        StartCoroutine(ScaleTime(1.0f, 0.0f, 3.0f));
+        gameoverPan.SetActive(true);
+        capsuleCollider.enabled = false;
+        scoreManager.enabled = false;
+        MortarCharger.isExploded = true;
     }
-    IEnumerator ScaleTime(float start, float end, float time) 
+    public IEnumerator ScaleTime(float start, float end, float time) 
     {
 	    float lastTime = Time.realtimeSinceStartup;
 	    float timer = 0.0f;

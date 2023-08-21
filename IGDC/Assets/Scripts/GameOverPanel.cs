@@ -7,6 +7,8 @@ public class GameOverPanel : MonoBehaviour
 {
     string SceneName= "DodgeBall AI";
     public GameObject gameManager;
+    public GameObject player;
+    public UIManager uIManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,8 +25,8 @@ public class GameOverPanel : MonoBehaviour
     {
         Shockwave.arebuttonsactive = false;
         Destroy(gameManager);
-        SceneManager.LoadScene(SceneName);
-        Time.timeScale = 1;
+        player.SetActive(false);
+        SceneManager.LoadScene(1);
     }
     public void QuitGame()
     {

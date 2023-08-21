@@ -84687,6 +84687,14 @@ PrefabInstance:
       value: 'Score : 0'
       objectReference: {fileID: 0}
     - target: {fileID: 2324739766854594541, guid: 4417311a90c5dee4db778c82b49c2d01, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 8530518042642966193}
+    - target: {fileID: 2324739766854594541, guid: 4417311a90c5dee4db778c82b49c2d01, type: 3}
+      propertyPath: uIManager
+      value: 
+      objectReference: {fileID: 6876100279244861148}
+    - target: {fileID: 2324739766854594541, guid: 4417311a90c5dee4db778c82b49c2d01, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1385540891}
@@ -86916,6 +86924,8 @@ MonoBehaviour:
   pausedPanel: {fileID: 1587346848}
   gameoverPan: {fileID: 1501460603}
   otherUI: {fileID: 835717840}
+  capsuleCollider: {fileID: 2018951040897211413}
+  scoreManager: {fileID: 1385540892}
 --- !u!95 &6876100279244861149
 Animator:
   serializedVersion: 5
