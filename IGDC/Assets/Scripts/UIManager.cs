@@ -59,6 +59,8 @@ public class UIManager : MonoBehaviour
 
     void Pause()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0;
         bgm.Pause();
         pausedPanel.SetActive(true);
@@ -66,6 +68,8 @@ public class UIManager : MonoBehaviour
     }
     void Resume()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1;
         bgm.Play();
         pausedPanel.SetActive(false);
