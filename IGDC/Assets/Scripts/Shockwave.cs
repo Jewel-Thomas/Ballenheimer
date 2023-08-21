@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Shockwave : MonoBehaviour
 {
@@ -62,7 +63,16 @@ public class Shockwave : MonoBehaviour
         winnerText_.text = (MortarCharger.isRedWinner) ? "<color=red>RED Team </color>Wins" : "<color=blue>BLUE Team </color>Wins"; 
         yield return new WaitForSeconds(1);
         arebuttonsactive = true;
-
+        yield return new WaitForSeconds(2);
+        panelAnim.gameObject.SetActive(false);
+        if(MortarCharger.isRedWinner)
+        {
+            SceneManager.LoadScene(4);
+        }
+        else
+        {
+            SceneManager.LoadScene(3);
+        }
 
     }
     

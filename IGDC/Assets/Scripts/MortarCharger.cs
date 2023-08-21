@@ -23,6 +23,7 @@ public class MortarCharger : MonoBehaviour
     {
         isExploded = false;
         isRedWinner = true;
+        isThrown = false;
         playerMortartimer = 0;
         playerChargeAmount.fillAmount = 0;
     }

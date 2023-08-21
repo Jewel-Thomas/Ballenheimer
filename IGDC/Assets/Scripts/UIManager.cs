@@ -23,6 +23,8 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         redHealth = 1100;
         blueHealth = 1600;
         tempColor.b = 0;
@@ -94,9 +96,9 @@ public class UIManager : MonoBehaviour
     {
         //UIManager.audioSource.PlayOneShot(other.gameObject.GetComponent<Player>().playerAudio);
         //parentObject.SetActive(false);
-        otherUI.SetActive(false);
-        Cursor.visible = true;
+        Cursor.visible = false;
         Cursor.lockState = CursorLockMode.None;
+        otherUI.SetActive(false);
         Destroy(pausedPanel);
         isover = true;
         player.enabled = false;

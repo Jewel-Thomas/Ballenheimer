@@ -17,13 +17,10 @@ public class WinningButtons : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Shockwave.arebuttonsactive)
+        if(Shockwave.arebuttonsactive && Shockwave.exploded)
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-            cont.gameObject.SetActive(true);
-            pl.gameObject.SetActive(true);
-            quit.gameObject.SetActive(true);
         }
         
     }

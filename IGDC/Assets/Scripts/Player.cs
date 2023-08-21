@@ -66,6 +66,9 @@ public class Player : MonoBehaviour,IThrowBall,Ihealth
         Application.targetFrameRate = 90;
         QualitySettings.vSyncCount = 0;
         QualitySettings.pixelLightCount = 6;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Shockwave.exploded = false;
         characterController = GetComponent<CharacterController>();
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;

@@ -23,5 +23,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DodgeBall AI.unity
     guid: 872ee18e17bf267439f8213cc706f507
+  - enabled: 1
+    path: Assets/Scenes/Blue Winner.unity
+    guid: d9367b7a7d0157546860ab5b938ea43f
+  - enabled: 1
+    path: Assets/Scenes/Red Winner.unity
+    guid: 0eadbcb4ec7056d4ebf1a98a738bfb46
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}
