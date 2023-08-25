@@ -8,7 +8,7 @@ public class LoadNextSceneAfterPlay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Invoke(nameof(ChangeScene),7);
+        Invoke(nameof(ChangeScene),8);
     }
 
     // Update is called once per frame
