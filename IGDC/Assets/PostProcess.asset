@@ -107,7 +107,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 1.68
+    value: 2.01
   threshold:
     overrideState: 1
     value: 0.1
@@ -160,8 +160,8 @@ MonoBehaviour:
     value: {fileID: 0}
     defaultState: 1
   tonemapper:
-    overrideState: 0
-    value: 2
+    overrideState: 1
+    value: 0
   toneCurveToeStrength:
     overrideState: 0
     value: 0

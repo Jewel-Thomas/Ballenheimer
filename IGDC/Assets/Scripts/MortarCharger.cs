@@ -30,6 +30,24 @@ public class MortarCharger : MonoBehaviour
     void Update()
     {
         ChargeUp();
+        if(Timer.hasTimerDrained && !isThrown)
+        {
+            if(playerMortartimer >= enemyMortartimer)
+            {
+                isExploded = true;
+                isRedWinner = true;
+                audioSource.PlayOneShot(fireAudio);
+                playerMortarController.ThrowNuclearBomb();
+            }
+            else
+            {
+                isExploded = true;
+                isRedWinner = false;
+                audioSource.PlayOneShot(fireAudio);
+                enemyMortarController.ThrowNuclearBomb();
+            }
+            isThrown = true;
+        }
         if(playerMortartimer>=chargeTime && !isThrown)
         {
             isExploded = true;
