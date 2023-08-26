@@ -299,7 +299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8caad93585d98d41b94eb52212f4623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyAfter: 3
+  destroyAfter: 2
   isPlayer: 0
   shootPerson: {fileID: 0}
   PlayerUI: {fileID: 0}
