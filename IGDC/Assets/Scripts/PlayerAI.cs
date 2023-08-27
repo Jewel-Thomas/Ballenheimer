@@ -24,6 +24,7 @@ public class PlayerAI : MonoBehaviour,IThrowBall,Ihealth
     private bool isDead;
     public static bool playerAITargetEquilizer = true;
     [SerializeField] static int targetCounter = 0;
+    [SerializeField] int Check;
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +54,7 @@ public class PlayerAI : MonoBehaviour,IThrowBall,Ihealth
     // Update is called once per frame
     void Update()
     {
+        Check = targetCounter;
         MoveTowardsTarget();
         FindTarget();
         if(health <= 0 && !isDead)
@@ -111,11 +113,19 @@ public class PlayerAI : MonoBehaviour,IThrowBall,Ihealth
                 // if(targetList.Count == 1) CancelInvoke();
                 aISpawner.enemyAI.Remove(currentTarget);
             }
-            navMeshAgent.speed = 10;
+            navMeshAgent.speed = 5;
             if(navMeshAgent.enabled)
             {
                 if(targetSetter==0) navMeshAgent.destination = currentTarget.transform.position;
                 else navMeshAgent.destination = mortarTransform.position;
+            }
+            if(Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                targetSetter=1;
+            }
+            if(Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                targetSetter=0;
             }
         }
         catch{
