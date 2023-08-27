@@ -44,12 +44,14 @@ public class UIModifier : MonoBehaviour
 
     public void FillIt()
     {
+        if(fill < 0) fill = 0;
         fill+=Time.deltaTime;
         Mathf.Clamp(fill,0,totFillTime);
         fillImage.fillAmount = fill/totFillTime;
     }
     public void EmptyIt()
     {
+        if(fill > totFillTime) fill = totFillTime;
         fill-=Time.deltaTime;
         Mathf.Clamp(fill,0,totFillTime);
         fillImage.fillAmount = fill/totFillTime;
