@@ -23,12 +23,22 @@ public class AIShooter : MonoBehaviour,IThrowBall,Ihealth
     [SerializeField] int targetSetter;
     [SerializeField] Animator characterAnim;
     bool isDead = false;
+    public static bool targetEquilizer = true;
 
     float randomTime;
     // Start is called before the first frame update
     void Start()
     {
-        targetSetter = Random.Range(0,2); // Used to make the AI have 50% chance to target mortar as well as the player AIs
+        if(targetEquilizer)
+        {
+            targetSetter=1;
+            targetEquilizer=!targetEquilizer;
+        }
+        else
+        {
+            targetSetter=0;
+            targetEquilizer=!targetEquilizer;
+        }
         aISpawner = FindObjectOfType<AISpawner>();
         isDead = false;
         mortarTransform = GameObject.FindGameObjectWithTag("PMortar").transform;

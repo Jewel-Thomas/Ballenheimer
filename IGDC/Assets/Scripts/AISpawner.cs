@@ -36,7 +36,7 @@ public class AISpawner : MonoBehaviour
         timer-=Time.deltaTime;
         timer = Mathf.Clamp(timer,0,30);
         RemoveAINotActive();
-        if(timer <= 0 && enemyAI.Count < 16 && !isDeactivated)
+        if(timer <= 0 && enemyAI.Count < 24 && !isDeactivated)
         {
             SpawnEnemy();
             timer = spawmtime;

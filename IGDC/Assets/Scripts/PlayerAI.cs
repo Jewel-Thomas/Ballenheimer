@@ -22,13 +22,26 @@ public class PlayerAI : MonoBehaviour,IThrowBall,Ihealth
     [SerializeField] Vector3 startPos;
     [SerializeField] Animator characterAnim;
     private bool isDead;
+    public static bool playerAITargetEquilizer = true;
+    [SerializeField] static int targetCounter = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         isDead = false;
         startPos = transform.localPosition;
-        targetSetter = Random.Range(0,2);
+        if(playerAITargetEquilizer)
+        {
+            targetSetter = 1;
+            playerAITargetEquilizer=!playerAITargetEquilizer;
+            targetCounter++;
+        }
+        else
+        {
+            targetSetter = 0;
+            playerAITargetEquilizer=!playerAITargetEquilizer;
+            targetCounter--;
+        }
         mortarTransform = GameObject.FindGameObjectWithTag("EMortar").transform;
         aISpawner = FindObjectOfType<AISpawner>();
         totalHealth = health;
@@ -48,6 +61,16 @@ public class PlayerAI : MonoBehaviour,IThrowBall,Ihealth
             UIManager.audioSource.PlayOneShot(playerAIAudio);
             navMeshAgent.enabled = false;
             characterAnim.SetTrigger("Dead");
+            if(targetCounter>0)
+            {
+                playerAITargetEquilizer=false;
+                targetCounter--;
+            }
+            else if(targetCounter<0)
+            {
+                playerAITargetEquilizer=true;
+                targetCounter++;
+            }
             StartCoroutine(Respawn());
         }
         UpdateHealthBar();
