@@ -22,9 +22,11 @@ public class UIManager : MonoBehaviour
     // [SerializeField] TextMeshProUGUI blueHealthText;
     public static AudioSource audioSource;
     [SerializeField] ScoreManager scoreManager;
+    [SerializeField] Animator canvasAnim;
     // Start is called before the first frame update
     void Start()
     {
+        canvasAnim = GetComponent<Animator>();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         redHealth = 1100;
@@ -51,6 +53,14 @@ public class UIManager : MonoBehaviour
         }
         //Time.timeScale += (1f/4f)*Time.unscaledDeltaTime;
         //Time.timeScale = Mathf.Clamp(Time.timeScale,0f,1f);
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            canvasAnim.SetTrigger("Key1");
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            canvasAnim.SetTrigger("Key2");
+        }
     }
 
     void CalculateFPS()
