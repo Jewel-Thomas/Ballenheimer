@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+
 public class Player : MonoBehaviour,IThrowBall,Ihealth
 {
     [SerializeField] BallSpawner ballSpawner;
@@ -27,6 +28,7 @@ public class Player : MonoBehaviour,IThrowBall,Ihealth
     private float verticalInput;
     Vector3 moveDirection;
     Rigidbody rb;
+    bool shootable = true;
 
     [Header("Health")]
     [Space]
@@ -79,12 +81,6 @@ public class Player : MonoBehaviour,IThrowBall,Ihealth
     {
         // Player specific throw abstract 
        
-
-            if(Input.GetMouseButtonDown(0))
-            {
-                Throw();
-            }
-
             // Getting Player Input Values
             PlayerInput();
             // Checks if the player is grounded using Raycast and changes the drag according to the isGrounded bool
@@ -116,6 +112,12 @@ public class Player : MonoBehaviour,IThrowBall,Ihealth
             Jump();
             // Continuous Jump if the JumpKey is Held down
             Invoke(nameof(ResetJump),jumpCoolDown);
+        }
+        if(Input.GetMouseButtonDown(0) && shootable)
+        {
+            shootable = false;
+            Throw();
+            StartCoroutine(ShootWaitTime());
         }
     }
     void Move()
@@ -170,6 +172,13 @@ public class Player : MonoBehaviour,IThrowBall,Ihealth
     public void Throw()
     {
         ballSpawner.ThrowBall(2.5f,true,this.gameObject);
+    }
+
+    // Enumerables
+    public IEnumerator ShootWaitTime()
+    {
+        yield return new WaitForSeconds(0.5f);
+        shootable = true;
     }
 
 }
