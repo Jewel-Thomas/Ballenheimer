@@ -103,12 +103,10 @@ public class Shockwave : MonoBehaviour
                 if(AIheath >= 30)
                 {
                     hittingObjects[i].gameObject.GetComponent<AIShooter>().TakeDamage(30);
-                    UIManager.blueHealth-=30;
                 }
                 else
                 {
                     hittingObjects[i].gameObject.GetComponent<AIShooter>().TakeDamage(AIheath);
-                    UIManager.blueHealth-=AIheath;
                 }
             }
         }

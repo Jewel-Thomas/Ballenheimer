@@ -60,7 +60,7 @@ public class PlayerAI : MonoBehaviour,IThrowBall,Ihealth
         if(health <= 0 && !isDead)
         {
             isDead = true;
-            UIManager.audioSource.PlayOneShot(playerAIAudio);
+            UIManager.Instance.audioSource.PlayOneShot(playerAIAudio);
             navMeshAgent.enabled = false;
             characterAnim.SetTrigger("Dead");
             if(targetCounter>0)

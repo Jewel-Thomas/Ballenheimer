@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using TMPro;
 
 public class Player : MonoBehaviour,IThrowBall,Ihealth
 {
     [SerializeField] BallSpawner ballSpawner;
+    [SerializeField] TextMeshProUGUI healthText;
     CharacterController characterController;
     public GameObject parent;
     [SerializeField] GameObject bomb;
@@ -164,6 +166,7 @@ public class Player : MonoBehaviour,IThrowBall,Ihealth
     public void TakeDamage(float damage)
     {
         health -= damage;
+        UIManager.Instance.HandleHealthText(this, healthText);
     }
     public float GetHealth()
     {

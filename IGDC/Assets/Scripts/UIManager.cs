@@ -5,34 +5,34 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager Instance;
     [SerializeField] Player player;
-    [SerializeField] TextMeshProUGUI fpsText; 
-    [SerializeField] TextMeshProUGUI healthText;
+    [SerializeField] TextMeshProUGUI fpsText;
     float deltaTime = 0.0f;
-    Color tempColor;
     [SerializeField] AudioSource bgm;
     bool isPaused = false;
     public bool isover = false;
     [SerializeField] GameObject pausedPanel, gameoverPan;
     [SerializeField] GameObject otherUI;
     [SerializeField] CapsuleCollider capsuleCollider;
-    public static float redHealth;
-    public static float blueHealth;
-    // [SerializeField] TextMeshProUGUI redHealthText;
-    // [SerializeField] TextMeshProUGUI blueHealthText;
-    public static AudioSource audioSource;
+    public AudioSource audioSource;
     [SerializeField] ScoreManager scoreManager;
     [SerializeField] Animator canvasAnim;
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        if (!Instance)
+            Instance = this;
+        else
+            Destroy(this);
+    }
+
     void Start()
     {
         canvasAnim = GetComponent<Animator>();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        redHealth = 1100;
-        blueHealth = 1600;
-        tempColor.b = 0;
-        tempColor.a = 1;
         audioSource = bgm;
     }
 
@@ -40,7 +40,6 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         CalculateFPS();
-        ChangeHealthText();
         if(!isPaused && Input.GetKeyDown(KeyCode.Escape) && !isover)
         {
             Pause();
@@ -80,6 +79,7 @@ public class UIManager : MonoBehaviour
         pausedPanel.SetActive(true);
         otherUI.SetActive(false);
     }
+
     void Resume()
     {
         Cursor.visible = false;
@@ -90,17 +90,13 @@ public class UIManager : MonoBehaviour
         otherUI.SetActive(true);
     }
 
-    public void ChangeHealthText()
+    public void HandleHealthText(Player player, TextMeshProUGUI healthText)
     {
         float currentHealth = player.GetHealth();
+        Color tempColor = Color.black;
+        tempColor.r = (100 - currentHealth) / 100;    // Increases the red color as the health goes down
+        tempColor.g = currentHealth / 100;
         healthText.text = $"Health : {currentHealth}";
-    }
-
-    public void ChangeColor()
-    {
-        float currentHealth = player.GetHealth();
-        tempColor.r = (100-currentHealth)/100;    // Increases the red color as the health goes down
-        tempColor.g = currentHealth/100;          // Decreases the green color as the health goes down
         healthText.color = tempColor;
     }
 
@@ -119,6 +115,7 @@ public class UIManager : MonoBehaviour
         scoreManager.enabled = false;
         MortarCharger.isExploded = true;
     }
+
     public IEnumerator ScaleTime(float start, float end, float time) 
     {
 	    float lastTime = Time.realtimeSinceStartup;

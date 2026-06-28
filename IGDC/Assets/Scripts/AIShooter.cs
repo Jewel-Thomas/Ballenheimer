@@ -63,7 +63,7 @@ public class AIShooter : MonoBehaviour,IThrowBall,Ihealth
         if(health <= 0 && !isDead)
         {
             isDead = true;
-            UIManager.audioSource.PlayOneShot(shooterAIAudio);
+            UIManager.Instance.audioSource.PlayOneShot(shooterAIAudio);
             CancelInvoke();
             ScoreManager.Instance.AddScore(5);
             aISpawner.enemyAI.Remove(this.gameObject);

@@ -32,23 +32,18 @@ public class Ball : MonoBehaviour
             if(other.gameObject.CompareTag("Player") && !isPlayer)
             {
                 try{
-                    float health = other.gameObject.GetComponent<Player>().GetHealth();
                     GameObject parentObject = other.gameObject.GetComponent<Player>().parent;
                     other.gameObject.GetComponent<Player>().TakeDamage(5);
-                    UIManager.redHealth-=5;
-                    UIManager.audioSource.PlayOneShot(other.gameObject.GetComponent<Player>().playerHitAudio);
-                    UIManager uIManager = other.gameObject.GetComponent<Player>().canvas.GetComponent<UIManager>(); 
-                    uIManager.ChangeColor();
+                    float health = other.gameObject.GetComponent<Player>().GetHealth();
+                    UIManager.Instance.audioSource.PlayOneShot(other.gameObject.GetComponent<Player>().playerHitAudio);
                     if(health<5)
                     {
-                        uIManager.GameOver();
-                        UIManager.audioSource.PlayOneShot(other.gameObject.GetComponent<Player>().playerAudio);
-                        //parentObject.SetActive(false);
+                        UIManager.Instance.GameOver();
+                        UIManager.Instance.audioSource.PlayOneShot(other.gameObject.GetComponent<Player>().playerAudio);
                     }
                 }
                 catch{
                     other.gameObject.GetComponent<PlayerAI>().TakeDamage(5);
-                    UIManager.redHealth-=5;
                 }
             }
         }
@@ -60,7 +55,6 @@ public class Ball : MonoBehaviour
             {
                 other.gameObject.GetComponent<AIShooter>().TakeDamage(5);
                 health = other.gameObject.GetComponent<AIShooter>().GetHealth();
-                UIManager.blueHealth-=5;
             }
         }
     }

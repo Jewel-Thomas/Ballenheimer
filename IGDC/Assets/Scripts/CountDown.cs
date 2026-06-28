@@ -34,10 +34,10 @@ public class CountDown : MonoBehaviour
         {
             countDownText.text = countDownTime.ToString();
             yield return new WaitForSeconds(1);
-            if(countDownTime > 1) UIManager.audioSource.PlayOneShot(tickAudio);
+            if(countDownTime > 1) UIManager.Instance.audioSource.PlayOneShot(tickAudio);
             countDownTime--;
         }
-        UIManager.audioSource.PlayOneShot(airHorn);
+        UIManager.Instance.audioSource.PlayOneShot(airHorn);
         countDownText.text = "DODGE!";
         StartGame();
         yield return new WaitForSeconds(2);
