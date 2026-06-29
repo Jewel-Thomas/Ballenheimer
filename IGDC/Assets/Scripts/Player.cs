@@ -6,11 +6,11 @@ using TMPro;
 
 public class Player : MonoBehaviour,IThrowBall,Ihealth
 {
-    [SerializeField] BallSpawner ballSpawner;
-    [SerializeField] TextMeshProUGUI healthText;
-    CharacterController characterController;
+    private CharacterController characterController;
     public GameObject parent;
-    [SerializeField] GameObject bomb;
+    [SerializeField] private BallSpawner ballSpawner;
+    [SerializeField] private TextMeshProUGUI healthText;
+    [SerializeField] private GameObject bomb;
 
     [Header("Movement")]
     [Space]
@@ -18,23 +18,24 @@ public class Player : MonoBehaviour,IThrowBall,Ihealth
     [Tooltip("Represents the forward direction of the player on only the Y axis")]
     public Transform orientation;
     [Tooltip("Amount of drag to be added to reduce slide while moving")]
-    [SerializeField] float groundDrag;
+    [SerializeField] private float groundDrag;
     [Tooltip("Amount of upward force for jump action")]
-    [SerializeField] float jumpForce;
+    [SerializeField] private float jumpForce;
     [Tooltip("Time until which jump can be reused")]
-    [SerializeField] float jumpCoolDown;
+    [SerializeField] private float jumpCoolDown;
     [Tooltip("Amount of air movement while moving in mid air")]
-    [SerializeField] float airMultiplier;
-    [SerializeField] bool isReadyToJump;
+    [SerializeField] private float airMultiplier;
+    [SerializeField] private bool isReadyToJump;
     private float horizontalInput;
     private float verticalInput;
-    Vector3 moveDirection;
-    Rigidbody rb;
+    private Vector3 moveDirection;
+    private Rigidbody rb;
     bool shootable = true;
 
     [Header("Health")]
     [Space]
-    [SerializeField] float health;
+    public float maxHealth = 100;
+    private float health;
 
     [Header("Keybinds")]
     [Space]
@@ -66,7 +67,7 @@ public class Player : MonoBehaviour,IThrowBall,Ihealth
     // Start is called before the first frame update
     void Start()
     {
-        health = 100;
+        health = maxHealth;
         Application.targetFrameRate = 90;
         QualitySettings.vSyncCount = 0;
         QualitySettings.pixelLightCount = 6;
