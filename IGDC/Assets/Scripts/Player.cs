@@ -116,7 +116,7 @@ public class Player : MonoBehaviour,IThrowBall,Ihealth
             // Continuous Jump if the JumpKey is Held down
             Invoke(nameof(ResetJump),jumpCoolDown);
         }
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0) && !UIManager.Instance.isPaused)
         {
             shootable = false;
             Throw();

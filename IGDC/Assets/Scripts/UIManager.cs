@@ -1,24 +1,22 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
-    [SerializeField] Player player;
-    [SerializeField] TextMeshProUGUI fpsText;
-    float deltaTime = 0.0f;
-    [SerializeField] AudioSource bgm;
-    bool isPaused = false;
+    [SerializeField] private Player player;
+    [SerializeField] private TextMeshProUGUI fpsText;
+    private float deltaTime = 0.0f;
+    [SerializeField] private AudioSource bgm;
+    public bool isPaused = false;
     public bool isover = false;
-    [SerializeField] GameObject pausedPanel, gameoverPan;
-    [SerializeField] GameObject otherUI;
-    [SerializeField] CapsuleCollider capsuleCollider;
+    [SerializeField] private GameObject pausedPanel, gameoverPan;
+    [SerializeField] private GameObject otherUI;
+    [SerializeField] private CapsuleCollider capsuleCollider;
     public AudioSource audioSource;
-    [SerializeField] ScoreManager scoreManager;
-    [SerializeField] Animator canvasAnim;
-    // Start is called before the first frame update
+    [SerializeField] private ScoreManager scoreManager;
+    [SerializeField] private Animator canvasAnim;
 
     private void Awake()
     {
@@ -40,22 +38,17 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         CalculateFPS();
-        if(!isPaused && Input.GetKeyDown(KeyCode.Escape) && !isover)
+        if(Input.GetKeyDown(KeyCode.Escape) && !isover && !CountDown.isCountingDown)
         {
-            Pause();
             isPaused = !isPaused;
+            SetPauseState(isPaused);
         }
-        else if(isPaused && Input.GetKeyDown(KeyCode.Escape) && !isover)
-        {
-            Resume();
-            isPaused = !isPaused;
-        }
-        //Time.timeScale += (1f/4f)*Time.unscaledDeltaTime;
-        //Time.timeScale = Mathf.Clamp(Time.timeScale,0f,1f);
+
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
             canvasAnim.SetTrigger("Key1");
         }
+
         if(Input.GetKeyDown(KeyCode.Alpha2))
         {
             canvasAnim.SetTrigger("Key2");
@@ -70,24 +63,21 @@ public class UIManager : MonoBehaviour
         fpsText.text = string.Format("{0:0.0} ms ({1:0.} fps)", msec, fps);
     }
 
-    void Pause()
+    void SetPauseState(bool isPaused)
     {
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-        Time.timeScale = 0;
-        bgm.Pause();
-        pausedPanel.SetActive(true);
-        otherUI.SetActive(false);
-    }
-
-    void Resume()
-    {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        Time.timeScale = 1;
-        bgm.Play();
-        pausedPanel.SetActive(false);
-        otherUI.SetActive(true);
+        Cursor.visible = isPaused;
+        Cursor.lockState = isPaused ? CursorLockMode.None : CursorLockMode.Locked;
+        Time.timeScale = isPaused ? 0 : 1;
+        if (isPaused)
+        {
+            bgm.Pause();
+        }
+        else
+        {
+            bgm.Play();
+        }
+        pausedPanel.SetActive(isPaused);
+        otherUI.SetActive(!isPaused);
     }
 
     public void HandleHealthText(float currentHealth, TextMeshProUGUI healthText)
@@ -110,7 +100,7 @@ public class UIManager : MonoBehaviour
         gameoverPan.SetActive(isGameOver);
         capsuleCollider.enabled = !isGameOver;
         scoreManager.enabled = !isGameOver;
-        MortarCharger.isExploded = isGameOver;
+        MortarCharger.isThrown = isGameOver;
     }
 
     public IEnumerator ScaleTime(float start, float end, float time) 

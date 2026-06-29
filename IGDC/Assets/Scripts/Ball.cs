@@ -30,7 +30,7 @@ public class Ball : MonoBehaviour
        
         try{
 
-            if(other.gameObject.CompareTag("Player") && !isPlayer)
+            if(other.gameObject.CompareTag("Player") && !isPlayer && !UIManager.Instance.isover)
             {
                 try{
                     GameObject parentObject = other.gameObject.GetComponent<Player>().parent;
@@ -49,7 +49,7 @@ public class Ball : MonoBehaviour
             }
         }
         catch {}
-        if(other.gameObject.CompareTag("AI") && isPlayer)
+        if(other.gameObject.CompareTag("AI") && isPlayer && !UIManager.Instance.isover)
         {
             float health = other.gameObject.GetComponent<AIShooter>().GetHealth();
             if(health > 0)

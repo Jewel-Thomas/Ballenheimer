@@ -14,9 +14,9 @@ public class MortarCharger : MonoBehaviour
     [SerializeField] MortarController playerMortarController;
     [SerializeField] MortarController enemyMortarController;
     public TextMeshProUGUI winnerText;
-    public bool isThrown = false;
+    public static bool isThrown = false;
     public static bool isRedWinner = true;
-    public static bool isExploded;
+    public static bool isExploded = false;
     public AudioSource audioSource;
     public AudioClip fireAudio;
     void Start()

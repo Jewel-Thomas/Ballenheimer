@@ -6,6 +6,7 @@ using TMPro;
 
 public class CountDown : MonoBehaviour
 {
+    public static bool isCountingDown;
     [SerializeField] int countDownTime;
     [SerializeField] TextMeshProUGUI countDownText;
     [Header("Player Component")]
@@ -22,6 +23,12 @@ public class CountDown : MonoBehaviour
     public List<NavMeshAgent> navMeshAgents;
     public List<AIShooter> aIShooters;
     public List<PlayerAI> playerAIs;
+
+    private void Awake()
+    {
+        isCountingDown = true;    
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +48,7 @@ public class CountDown : MonoBehaviour
         UIManager.Instance.audioSource.PlayOneShot(airHorn);
         countDownText.text = "DODGE!";
         StartGame();
+        isCountingDown = false;
         yield return new WaitForSeconds(2);
         countDownText.gameObject.SetActive(false);
     }
