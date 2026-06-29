@@ -72,8 +72,6 @@ public class AIShooter : MonoBehaviour,IThrowBall,Ihealth
             Destroy(this.gameObject,5);
         }
         try{
-            // Transform playerPos = player.transform;
-            // navMeshAgent.destination = playerPos.position;
             healthBar.fillAmount = health/totalHealth;
         }
         catch

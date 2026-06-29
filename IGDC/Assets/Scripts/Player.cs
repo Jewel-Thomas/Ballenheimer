@@ -166,7 +166,7 @@ public class Player : MonoBehaviour,IThrowBall,Ihealth
     public void TakeDamage(float damage)
     {
         health -= damage;
-        UIManager.Instance.HandleHealthText(this, healthText);
+        UIManager.Instance.HandleHealthText(health, healthText);
     }
     public float GetHealth()
     {
@@ -182,6 +182,11 @@ public class Player : MonoBehaviour,IThrowBall,Ihealth
     {
         yield return new WaitForSeconds(0.5f);
         shootable = true;
+    }
+
+    public TextMeshProUGUI GetHealthText()
+    {
+        return healthText;
     }
 
 }

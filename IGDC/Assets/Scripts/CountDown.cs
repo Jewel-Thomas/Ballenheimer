@@ -30,7 +30,8 @@ public class CountDown : MonoBehaviour
 
     IEnumerator CountDownStarter()
     {
-        while(countDownTime > 0)
+        UIManager.Instance.HandleHealthText(100, player.GetHealthText());
+        while (countDownTime > 0)
         {
             countDownText.text = countDownTime.ToString();
             yield return new WaitForSeconds(1);

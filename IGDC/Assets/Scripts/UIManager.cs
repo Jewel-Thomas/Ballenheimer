@@ -25,7 +25,7 @@ public class UIManager : MonoBehaviour
         if (!Instance)
             Instance = this;
         else
-            Destroy(this);
+            Destroy(gameObject);
     }
 
     void Start()
@@ -90,9 +90,8 @@ public class UIManager : MonoBehaviour
         otherUI.SetActive(true);
     }
 
-    public void HandleHealthText(Player player, TextMeshProUGUI healthText)
+    public void HandleHealthText(float currentHealth, TextMeshProUGUI healthText)
     {
-        float currentHealth = player.GetHealth();
         Color tempColor = Color.black;
         tempColor.r = (100 - currentHealth) / 100;    // Increases the red color as the health goes down
         tempColor.g = currentHealth / 100;

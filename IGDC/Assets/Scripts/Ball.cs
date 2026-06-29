@@ -54,7 +54,6 @@ public class Ball : MonoBehaviour
             if(health > 0)
             {
                 other.gameObject.GetComponent<AIShooter>().TakeDamage(5);
-                health = other.gameObject.GetComponent<AIShooter>().GetHealth();
             }
         }
     }
