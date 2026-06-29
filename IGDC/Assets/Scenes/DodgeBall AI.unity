@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 0
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 582067248}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 0}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9024,6 +9023,7 @@ MonoBehaviour:
     RefIds:
     - rid: 3209001684584890403
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
+      data: 
 --- !u!114 &225660413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15987,13 +15987,15 @@ ParticleSystemRenderer:
   m_RenderAlignment: 0
   m_Pivot: {x: 0, y: 0, z: 0}
   m_Flip: {x: 0, y: 0, z: 0}
-  m_UseCustomVertexStreams: 0
   m_EnableGPUInstancing: 1
   m_ApplyActiveColorSpace: 1
   m_AllowRoll: 1
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
+  m_UseCustomVertexStreams: 0
   m_VertexStreams: 00010304
+  m_UseCustomTrailVertexStreams: 0
+  m_TrailVertexStreams: 00010304
   m_Mesh: {fileID: 0}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
@@ -20953,13 +20955,15 @@ ParticleSystemRenderer:
   m_RenderAlignment: 0
   m_Pivot: {x: 0, y: 0, z: 0}
   m_Flip: {x: 0, y: 0, z: 0}
-  m_UseCustomVertexStreams: 0
   m_EnableGPUInstancing: 1
   m_ApplyActiveColorSpace: 1
   m_AllowRoll: 1
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
+  m_UseCustomVertexStreams: 0
   m_VertexStreams: 00010304
+  m_UseCustomTrailVertexStreams: 0
+  m_TrailVertexStreams: 00010304
   m_Mesh: {fileID: 0}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
@@ -28474,6 +28478,7 @@ MonoBehaviour:
     RefIds:
     - rid: 3209001684584890387
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
+      data: 
 --- !u!114 &478977149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30395,6 +30400,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1961100726}
     m_Modifications:
+    - target: {fileID: 15751170760221238, guid: 0ee6ac4661c4fe947bd3efa774da468f, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 15751170760221238, guid: 0ee6ac4661c4fe947bd3efa774da468f, type: 3}
+      propertyPath: m_FillOrigin
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 335189910248869843, guid: 0ee6ac4661c4fe947bd3efa774da468f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.07795186
@@ -32272,6 +32285,7 @@ MonoBehaviour:
     RefIds:
     - rid: 3209001684584890390
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
+      data: 
 --- !u!114 &553990486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37842,13 +37856,15 @@ ParticleSystemRenderer:
   m_RenderAlignment: 0
   m_Pivot: {x: 0, y: 0, z: 0}
   m_Flip: {x: 0, y: 0, z: 0}
-  m_UseCustomVertexStreams: 0
   m_EnableGPUInstancing: 1
   m_ApplyActiveColorSpace: 1
   m_AllowRoll: 1
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
+  m_UseCustomVertexStreams: 0
   m_VertexStreams: 00010304
+  m_UseCustomTrailVertexStreams: 0
+  m_TrailVertexStreams: 00010304
   m_Mesh: {fileID: 0}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
@@ -58799,13 +58815,15 @@ ParticleSystemRenderer:
   m_RenderAlignment: 0
   m_Pivot: {x: 0, y: 0, z: 0}
   m_Flip: {x: 0, y: 0, z: 0}
-  m_UseCustomVertexStreams: 0
   m_EnableGPUInstancing: 1
   m_ApplyActiveColorSpace: 1
   m_AllowRoll: 1
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
+  m_UseCustomVertexStreams: 0
   m_VertexStreams: 00010304
+  m_UseCustomTrailVertexStreams: 0
+  m_TrailVertexStreams: 00010304
   m_Mesh: {fileID: 0}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
@@ -65735,6 +65753,7 @@ MonoBehaviour:
     RefIds:
     - rid: 3209001684584890381
       type: {class: Prism, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
+      data: 
 --- !u!114 &1250403535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77170,6 +77189,7 @@ MonoBehaviour:
     RefIds:
     - rid: 3209001684584890388
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
+      data: 
 --- !u!114 &1679084180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79527,6 +79547,7 @@ MonoBehaviour:
     RefIds:
     - rid: 3209001684584890375
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
+      data: 
 --- !u!114 &1760410857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95591,6 +95612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballSpawner: {fileID: 1195191583112464275}
+  healthText: {fileID: 800334713744261431}
   parent: {fileID: 5858064831080144040}
   bomb: {fileID: 3870938065219037200, guid: 28830c19b75153a4693e4aed78b76db2, type: 3}
   moveSpeed: 12
@@ -100753,13 +100775,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 3366223121226955937}
   fpsText: {fileID: 1984780563241770951}
-  healthText: {fileID: 800334713744261431}
   bgm: {fileID: 1587263630}
   isover: 0
   pausedPanel: {fileID: 1587346848}
   gameoverPan: {fileID: 1501460603}
   otherUI: {fileID: 835717840}
   capsuleCollider: {fileID: 2018951040897211413}
+  audioSource: {fileID: 0}
   scoreManager: {fileID: 1385540892}
   canvasAnim: {fileID: 0}
 --- !u!95 &6876100279244861149
