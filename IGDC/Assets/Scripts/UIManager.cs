@@ -99,20 +99,18 @@ public class UIManager : MonoBehaviour
         healthText.color = tempColor;
     }
 
-    public void GameOver()
+    public void SetGameOverState(bool isGameOver)
     {
-        //UIManager.audioSource.PlayOneShot(other.gameObject.GetComponent<Player>().playerAudio);
-        //parentObject.SetActive(false);
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-        otherUI.SetActive(false);
-        Destroy(pausedPanel);
-        isover = true;
-        player.enabled = false;
-        gameoverPan.SetActive(true);
-        capsuleCollider.enabled = false;
-        scoreManager.enabled = false;
-        MortarCharger.isExploded = true;
+        Cursor.visible = isGameOver;
+        Cursor.lockState = isGameOver ? CursorLockMode.None : CursorLockMode.Locked;
+        otherUI.SetActive(!isGameOver);
+        pausedPanel.SetActive(!isGameOver);
+        isover = isGameOver;
+        player.enabled = !isGameOver;
+        gameoverPan.SetActive(isGameOver);
+        capsuleCollider.enabled = !isGameOver;
+        scoreManager.enabled = !isGameOver;
+        MortarCharger.isExploded = isGameOver;
     }
 
     public IEnumerator ScaleTime(float start, float end, float time) 

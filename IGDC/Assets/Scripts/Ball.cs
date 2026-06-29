@@ -12,6 +12,7 @@ public class Ball : MonoBehaviour
     public GameObject shootPerson;
     [SerializeField] GameObject PlayerUI;
     UIManager uimanger;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +39,7 @@ public class Ball : MonoBehaviour
                     UIManager.Instance.audioSource.PlayOneShot(other.gameObject.GetComponent<Player>().playerHitAudio);
                     if(health<5)
                     {
-                        UIManager.Instance.GameOver();
+                        UIManager.Instance.SetGameOverState(true);
                         UIManager.Instance.audioSource.PlayOneShot(other.gameObject.GetComponent<Player>().playerAudio);
                     }
                 }
@@ -57,6 +58,7 @@ public class Ball : MonoBehaviour
             }
         }
     }
+
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("PMortar") && !isPlayer)
@@ -68,7 +70,5 @@ public class Ball : MonoBehaviour
             other.GetComponent<MortarController>().mortarCharger.enemyMortartimer-=2;
         }
     }
-
-
 
 }
