@@ -18,19 +18,19 @@ EditorBuildSettings:
     path: Assets/Scenes/LogoScene.unity
     guid: 282435d98c2702944bfeedbac76309f0
   - enabled: 1
-    path: Assets/Scenes/Mainmenu.unity
+    path: Assets/Scenes/MainMenu.unity
     guid: 0fcbf7023f6b69e41bb2ca7ffb2ceeb7
   - enabled: 1
-    path: Assets/Scenes/DodgeBall AI.unity
+    path: Assets/Scenes/MainScene.unity
     guid: 872ee18e17bf267439f8213cc706f507
   - enabled: 1
-    path: Assets/Scenes/Blue Winner.unity
+    path: Assets/Scenes/BlueWinner.unity
     guid: d9367b7a7d0157546860ab5b938ea43f
   - enabled: 1
-    path: Assets/Scenes/Red Winner.unity
+    path: Assets/Scenes/RedWinner.unity
     guid: 0eadbcb4ec7056d4ebf1a98a738bfb46
   - enabled: 1
-    path: Assets/Scenes/Narration Screen.unity
+    path: Assets/Scenes/NarrationScene.unity
     guid: a43996b2482af6240a687e4b003f3a84
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}

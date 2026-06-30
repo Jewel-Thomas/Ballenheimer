@@ -11,7 +11,6 @@ public class Ball : MonoBehaviour
     public bool isPlayer = false;
     public GameObject shootPerson;
     [SerializeField] GameObject PlayerUI;
-    UIManager uimanger;
 
     // Start is called before the first frame update
     void Start()

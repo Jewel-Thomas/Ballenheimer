@@ -19,14 +19,15 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CountDown();
+        if (!CountDown.isCountingDown) MatchCountDown();
+
         if(timer <= 0)
         {
             hasTimerDrained = true;
         }
     }
 
-    public void CountDown()
+    public void MatchCountDown()
     {
         timer-=Time.deltaTime;
         timer = Mathf.Clamp(timer,0,totTime);

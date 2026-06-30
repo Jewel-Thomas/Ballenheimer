@@ -14,7 +14,6 @@ public class ScoreManager : MonoBehaviour
         if(!Instance)
         {
             Instance = this;
-            DontDestroyOnLoad(Instance);
             return;
         }
         Destroy(this);

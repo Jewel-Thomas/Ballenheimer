@@ -1,8 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement;
 
 public class Shockwave : MonoBehaviour
 {
@@ -67,11 +65,11 @@ public class Shockwave : MonoBehaviour
         panelAnim.gameObject.SetActive(false);
         if(MortarCharger.isRedWinner)
         {
-            SceneManager.LoadScene(4);
+            BallenheimerSceneManager.Instance.LoadSceneSynchronous(BallenheimerSceneManager.GameScene.RedWinner);
         }
         else
         {
-            SceneManager.LoadScene(3);
+            BallenheimerSceneManager.Instance.LoadSceneSynchronous(BallenheimerSceneManager.GameScene.BlueWinner);
         }
 
     }
@@ -127,15 +125,6 @@ public class Shockwave : MonoBehaviour
         }
 
         linerender.widthMultiplier = Mathf.Lerp(0f, startWidth, 1f - currentRadius/maxRadius);
-    }
-
-    private void Update()
-    {
-        //if(Input.GetKeyDown("space")) //Shockwave starts on pressing space
-        //{
-            
-        //}
-        
     }
 
 }
