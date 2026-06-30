@@ -77016,6 +77016,7 @@ MonoBehaviour:
   player: {fileID: 3366223121226955937}
   fpsText: {fileID: 1984780563241770951}
   bgm: {fileID: 1587263630}
+  isPaused: 0
   isover: 0
   pausedPanel: {fileID: 1587346848}
   gameoverPan: {fileID: 1501460603}
@@ -77079,7 +77080,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f80c42ca6fb02b418fb7ccf488b3bb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totTime: 25
+  totTime: 300
   timerImage: {fileID: 908137284}
 --- !u!23 &6880278931041924399
 MeshRenderer:
